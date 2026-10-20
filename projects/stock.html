@@ -1,0 +1,631 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#09090b">
+    <meta name="color-scheme" content="dark">
+
+    <meta name="description" content="StockWise is a Python-based inventory management system using SQLite and HTML to organize products, monitor stock levels, and manage inventory records.">
+
+    <title>StockWise | Hexyl Athan N. Roblon</title>
+
+    <link rel="icon" type="image/png" href="../Images/logo.png">
+    <link rel="apple-touch-icon" href="../Images/logo.png">
+    <link rel="stylesheet" href="../styles.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        .detail-hero {
+            padding: 140px 0 70px;
+        }
+
+        .detail-back {
+            display: inline-block;
+            margin-bottom: 32px;
+            text-decoration: none;
+            transition: color 0.25s ease;
+        }
+
+        .detail-kicker {
+            color: #a1a1aa;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 18px;
+        }
+
+        .detail-hero h1 {
+            max-width: 900px;
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            line-height: 1.08;
+            letter-spacing: -2px;
+            margin-bottom: 24px;
+        }
+
+        .detail-lead {
+            max-width: 760px;
+            color: #a1a1aa;
+            line-height: 1.9;
+            font-size: 1.05rem;
+        }
+
+        .detail-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 28px 0;
+        }
+
+        .detail-tags span {
+            padding: 8px 14px;
+            border: 1px solid #27272a;
+            border-radius: 50px;
+            color: #d4d4d8;
+            font-size: 0.8rem;
+        }
+
+        .detail-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 28px;
+        }
+
+        .detail-layout {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 290px;
+            gap: 26px;
+            align-items: start;
+            padding-top: 25px;
+            padding-bottom: 90px;
+        }
+
+        .detail-main,
+        .detail-sidebar {
+            display: grid;
+            gap: 22px;
+            min-width: 0;
+        }
+
+        .detail-panel {
+            padding: 28px;
+            border: 1px solid #27272a;
+            border-radius: 16px;
+            background: #111113;
+        }
+
+        .detail-panel h2 {
+            font-size: 1.2rem;
+            line-height: 1.4;
+            margin: 0 0 18px;
+        }
+
+        .detail-panel p {
+            color: #a1a1aa;
+            line-height: 1.9;
+            margin: 0 0 15px;
+        }
+
+        .detail-panel p:last-child {
+            margin-bottom: 0;
+        }
+
+        .detail-list {
+            padding-left: 20px;
+            color: #a1a1aa;
+            line-height: 2;
+        }
+
+        .detail-list li {
+            padding-left: 3px;
+            margin-bottom: 5px;
+        }
+
+        .detail-stat {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            padding: 15px 0;
+            border-bottom: 1px solid #27272a;
+        }
+
+        .detail-stat:first-of-type {
+            padding-top: 0;
+        }
+
+        .detail-stat:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .detail-stat strong {
+            font-size: 0.85rem;
+        }
+
+        .detail-stat span {
+            color: #a1a1aa;
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+
+        .project-cover {
+            overflow: hidden;
+            border: 1px solid #27272a;
+            border-radius: 16px;
+            background: #111113;
+        }
+
+        .project-cover img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        .cover-caption {
+            padding: 15px 18px;
+            color: #a1a1aa;
+            font-size: 0.85rem;
+            line-height: 1.7;
+            border-top: 1px solid #27272a;
+        }
+
+        .screenshot-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        .screenshot-card {
+            min-width: 0;
+            overflow: hidden;
+            border: 1px solid #27272a;
+            border-radius: 12px;
+            background: #151517;
+        }
+
+        .screenshot-card img {
+            display: block;
+            width: 100%;
+            aspect-ratio: 16 / 10;
+            object-fit: cover;
+            background: #18181b;
+        }
+
+        .screenshot-caption {
+            padding: 14px;
+        }
+
+        .screenshot-caption h3 {
+            font-size: 0.9rem;
+            margin: 0 0 6px;
+        }
+
+        .screenshot-caption p {
+            font-size: 0.8rem;
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        .detail-callout {
+            padding: 20px;
+            border: 1px solid #27272a;
+            border-radius: 14px;
+            color: #a1a1aa;
+            font-size: 0.9rem;
+            line-height: 1.8;
+        }
+
+        .detail-back:hover,
+        .footer a:hover {
+            color: #fff;
+        }
+
+        @media (max-width: 850px) {
+            .detail-layout {
+                grid-template-columns: minmax(0, 1fr);
+            }
+
+            .detail-sidebar {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .detail-sidebar .detail-callout {
+                grid-column: 1 / -1;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .detail-hero {
+                padding-top: 115px;
+            }
+
+            .detail-hero h1 {
+                letter-spacing: -1px;
+            }
+
+            .detail-panel {
+                padding: 21px;
+            }
+
+            .detail-sidebar,
+            .screenshot-grid {
+                grid-template-columns: minmax(0, 1fr);
+            }
+
+            .detail-actions {
+                flex-direction: column;
+            }
+
+            .detail-actions .btn {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body class="project-detail-page">
+<div class="aurora-cursor" aria-hidden="true"></div>
+    <!-- Navigation -->
+    <header class="navbar">
+        <div class="container navbar-inner">
+
+            <a class="logo" href="../index.html#home">
+                ATHAN<span>.</span>
+            </a>
+
+            <nav aria-label="Main navigation">
+                <ul class="nav-links">
+                    <li><a href="../index.html#home">Home</a></li>
+                    <li><a href="../index.html#about">About</a></li>
+                    <li><a href="../index.html#skills">Skills</a></li>
+                    <li><a href="../index.html#projects" class="active">Projects</a></li>
+                    <li><a href="../index.html#contact">Contact</a></li>
+                </ul>
+            </nav>
+
+            <a class="nav-contact" href="../index.html#contact">
+                Let's Talk ↗
+            </a>
+
+        </div>
+    </header>
+
+    <main>
+
+        <!-- Project Introduction -->
+        <section class="detail-hero">
+            <div class="container">
+
+                <a class="detail-back" href="../index.html#projects">
+                    ← Back to all projects
+                </a>
+
+                <p class="detail-kicker">
+                    Python Application · Inventory Management
+                </p>
+
+                <h1>StockWise</h1>
+
+                <p class="detail-lead">
+                    StockWise is an inventory management system designed to
+                    help users organize product records, monitor stock
+                    quantities, and manage inventory information through
+                    a centralized application. It uses Python for application
+                    logic, SQLite for data storage, and HTML for the interface.
+                </p>
+
+                <div class="detail-tags">
+                    <span>Python</span>
+                    <span>SQLite</span>
+                    <span>HTML</span>
+                </div>
+
+                <div class="detail-actions">
+                    <a class="btn btn-primary" href="../index.html#contact">
+                        Contact Me ↗
+                    </a>
+
+                    <a class="btn btn-secondary" href="../index.html#projects">
+                        Explore Other Projects
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Project Content -->
+        <section>
+            <div class="container detail-layout">
+
+                <div class="detail-main">
+
+                    <!-- Main Screenshot -->
+                    <div class="project-cover">
+                        <img
+                            src="../Images/Stockwise.png"
+                            alt="StockWise inventory management system preview"
+                            loading="lazy"
+                        >
+
+                        <div class="cover-caption">
+                            StockWise — inventory management interface preview.
+                        </div>
+                    </div>
+
+                    <!-- Overview -->
+                    <article class="detail-panel" id="overview">
+                        <h2>Project Overview</h2>
+
+                        <p>
+                            StockWise is a software project focused on
+                            simplifying inventory management. It provides
+                            a centralized way to organize product information
+                            and keep track of inventory records.
+                        </p>
+
+                        <p>
+                            Python handles the application's processing,
+                            while SQLite stores inventory data in a local
+                            database. HTML is used to structure the interface
+                            where applicable.
+                        </p>
+
+                        <p>
+                            The goal is to make inventory information easier
+                            to manage, reduce reliance on manual records,
+                            and help users access product information more
+                            efficiently.
+                        </p>
+                    </article>
+
+                    <!-- Features -->
+                    <article class="detail-panel" id="features">
+                        <h2>Key Features</h2>
+
+                        <ul class="detail-list">
+                            <li>
+                                <strong>Product Management</strong> —
+                                Organize and maintain product information.
+                            </li>
+
+                            <li>
+                                <strong>Inventory Tracking</strong> —
+                                Monitor available stock quantities.
+                            </li>
+
+                            <li>
+                                <strong>Stock Updates</strong> —
+                                Maintain inventory records when quantities
+                                change, if supported by the implementation.
+                            </li>
+
+                            <li>
+                                <strong>SQLite Database</strong> —
+                                Store and retrieve inventory information
+                                using a lightweight database.
+                            </li>
+
+                            <li>
+                                <strong>Inventory Overview</strong> —
+                                Review available product and stock information.
+                            </li>
+                        </ul>
+                    </article>
+
+                    <!-- Workflow -->
+                    <article class="detail-panel" id="workflow">
+                        <h2>System Workflow</h2>
+
+                        <p>
+                            <strong>01. Open the Application</strong><br>
+                            The user opens StockWise and accesses its
+                            available inventory functions.
+                        </p>
+
+                        <p>
+                            <strong>02. Access Product Records</strong><br>
+                            The user views the available product information
+                            stored in the system.
+                        </p>
+
+                        <p>
+                            <strong>03. Manage Inventory</strong><br>
+                            The user adds, updates, or manages product and
+                            stock records according to the available features.
+                        </p>
+
+                        <p>
+                            <strong>04. Process Data</strong><br>
+                            Python processes supported operations and
+                            communicates with the SQLite database.
+                        </p>
+
+                        <p>
+                            <strong>05. Review Inventory Information</strong><br>
+                            The user checks the updated product records
+                            through the application's interface.
+                        </p>
+                    </article>
+
+                    <!-- Challenges -->
+                    <article class="detail-panel" id="challenges">
+                        <h2>Challenges &amp; Considerations</h2>
+
+                        <p>
+                            <strong>Organizing inventory records</strong><br>
+                            Product details and quantities need to be
+                            structured clearly so users can find and manage
+                            inventory information efficiently.
+                        </p>
+
+                        <p>
+                            <strong>Managing database operations</strong><br>
+                            The application must correctly save, retrieve,
+                            and update records in SQLite to maintain
+                            consistent inventory data.
+                        </p>
+
+                        <p>
+                            <strong>Handling incorrect input</strong><br>
+                            Input validation helps prevent missing product
+                            details and invalid stock quantities.
+                        </p>
+
+                        <p>
+                            <strong>Creating a usable interface</strong><br>
+                            Clear labels, readable information, and
+                            straightforward navigation help make inventory
+                            tasks easier to complete.
+                        </p>
+                    </article>
+
+                    <!-- Outcome -->
+                    <article class="detail-panel" id="outcome">
+                        <h2>Project Outcome</h2>
+
+                        <p>
+                            StockWise is still under development, with some features and functionalities yet to be completed. Further improvements and testing are needed to ensure the system works as intended.
+                        </p>
+
+                    </article>
+
+                </div>
+
+                <!-- Sidebar -->
+                <aside class="detail-sidebar">
+
+                    <article class="detail-panel">
+                        <h2>Project Information</h2>
+
+                        <div class="detail-stat">
+                            <strong>Project Name</strong>
+                            <span>StockWise</span>
+                        </div>
+
+                        <div class="detail-stat">
+                            <strong>Project Type</strong>
+                            <span>Inventory Management System</span>
+                        </div>
+
+                        <div class="detail-stat">
+                            <strong>Platform</strong>
+                            <span>Visual Studio Code</span>
+                        </div>
+
+                        <div class="detail-stat">
+                            <strong>Database</strong>
+                            <span>SQLite</span>
+                        </div>
+
+                        <div class="detail-stat">
+                            <strong>My Role</strong>
+                            <span>FullStack</span>
+                        </div>
+                    </article>
+
+                    <!-- Technologies -->
+                    <article class="detail-panel" id="technologies">
+                        <h2>Tools &amp; Technologies</h2>
+
+                        <ul class="detail-list">
+                            <li>Python — Application logic</li>
+                            <li>SQLite — Database storage</li>
+                            <li>HTML — Interface structure</li>
+                        </ul>
+                    </article>
+
+                    <article class="detail-panel">
+                        <h2>Interested in My Work?</h2>
+
+                        <p>
+                            Feel free to reach out to discuss StockWise,
+                            its development process, or other projects
+                            in my portfolio.
+                        </p>
+
+                        <a class="btn btn-primary" href="../index.html#contact">
+                            Get in Touch ↗
+                        </a>
+                    </article>
+
+                    <div class="detail-callout">
+                        This project page should reflect the features
+                        and technologies actually implemented in StockWise.
+                    </div>
+
+                </aside>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-inner">
+            <p>© 2026 Hexyl Athan N. Roblon.</p>
+
+            <a href="../index.html#home">
+                Back to home ↑
+            </a>
+        </div>
+    </footer>
+<script>
+  const aurora = document.querySelector(".aurora-cursor");
+
+  if (
+    aurora &&
+    window.matchMedia("(hover: hover) and (pointer: fine)").matches
+  ) {
+    let targetX = window.innerWidth / 2;
+    let targetY = window.innerHeight / 2;
+    let currentX = targetX;
+    let currentY = targetY;
+    let animationFrame = null;
+
+    function animateAurora() {
+      currentX += (targetX - currentX) * 0.1;
+      currentY += (targetY - currentY) * 0.1;
+
+      aurora.style.setProperty("--cursor-x", `${currentX}px`);
+      aurora.style.setProperty("--cursor-y", `${currentY}px`);
+
+      if (
+        Math.abs(targetX - currentX) > 0.2 ||
+        Math.abs(targetY - currentY) > 0.2
+      ) {
+        animationFrame = requestAnimationFrame(animateAurora);
+      } else {
+        currentX = targetX;
+        currentY = targetY;
+        animationFrame = null;
+      }
+    }
+
+    window.addEventListener("pointermove", (event) => {
+      targetX = event.clientX;
+      targetY = event.clientY;
+
+      aurora.classList.add("is-visible");
+
+      if (animationFrame === null) {
+        animationFrame = requestAnimationFrame(animateAurora);
+      }
+    });
+
+    document.documentElement.addEventListener("pointerleave", () => {
+      aurora.classList.remove("is-visible");
+    });
+
+    document.documentElement.addEventListener("pointerenter", () => {
+      aurora.classList.add("is-visible");
+    });
+  }
+</script>
+</body>
+</html>

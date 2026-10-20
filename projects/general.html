@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#09090b">
+    <meta name="color-scheme" content="dark">
+
+    <meta name="description" content="General Medical Appointment System — a web-based application concept for organizing patient appointments, managing schedules, and supporting clinic appointment operations.">
+
+    <title>General Medical Appointment System | Hexyl Athan N. Roblon</title>
+<link rel="icon" type="image/png" href="../Images/logo.png">
+<link rel="apple-touch-icon" href="../Images/logo.png">
+    <link rel="stylesheet" href="../styles.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        .detail-hero {
+            padding: 150px 0 70px;
+        }
+
+        .detail-back {
+            display: inline-block;
+            margin-bottom: 35px;
+            text-decoration: none;
+        }
+
+        .detail-kicker {
+            color: #a1a1aa;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.8rem;
+            margin-bottom: 18px;
+        }
+
+        .detail-hero h1 {
+            max-width: 950px;
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            line-height: 1.08;
+            letter-spacing: -2px;
+            margin-bottom: 25px;
+        }
+
+        .detail-lead {
+            max-width: 750px;
+            color: #a1a1aa;
+            font-size: 1.05rem;
+            line-height: 1.9;
+        }
+
+        .detail-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 28px 0;
+        }
+
+        .detail-tags span {
+            padding: 8px 14px;
+            border: 1px solid #27272a;
+            border-radius: 50px;
+            color: #d4d4d8;
+            font-size: 0.8rem;
+        }
+
+        .detail-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 30px;
+        }
+
+        .detail-layout {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 300px;
+            gap: 28px;
+            align-items: start;
+            padding-top: 30px;
+            padding-bottom: 100px;
+        }
+
+        .detail-main,
+        .detail-sidebar {
+            display: grid;
+            gap: 22px;
+            min-width: 0;
+        }
+
+        .detail-preview {
+            overflow: hidden;
+            border: 1px solid #27272a;
+            border-radius: 16px;
+            background: #111113;
+        }
+
+        .medical-preview {
+            min-height: 320px;
+            padding: 35px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background:
+                radial-gradient(ellipse at top right, #173b40 0%, transparent 55%),
+                #101012;
+        }
+
+        .medical-preview .preview-icon {
+            width: 70px;
+            height: 70px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 22px;
+            border: 1px solid #31545a;
+            border-radius: 18px;
+            background: #152629;
+            color: #67e8f9;
+            font-size: 2.5rem;
+            font-weight: 500;
+        }
+
+        .medical-preview .preview-label {
+            color: #67e8f9;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 800;
+            letter-spacing: -2px;
+        }
+
+        .medical-preview .preview-subtitle {
+            color: #a1a1aa;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            line-height: 1.8;
+            margin-top: 12px;
+        }
+
+        .medical-preview .preview-description {
+            color: #d4d4d8;
+            font-size: 0.95rem;
+            line-height: 1.8;
+            max-width: 480px;
+            margin-top: 22px;
+        }
+
+        .preview-stats {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 25px;
+        }
+
+        .preview-stat {
+            border: 1px solid #303b40;
+            background: #151a1c;
+            border-radius: 10px;
+            padding: 15px 20px;
+            min-width: 115px;
+        }
+
+        .preview-stat strong {
+            display: block;
+            color: #67e8f9;
+            font-size: 1rem;
+        }
+
+        .preview-stat span {
+            display: block;
+            color: #a1a1aa;
+            font-size: 0.75rem;
+            margin-top: 6px;
+        }
+
+        .detail-panel {
+            padding: 28px;
+            border: 1px solid #27272a;
+            border-radius: 16px;
+            background: #111113;
+            scroll-margin-top: 100px;
+        }
+
+        .detail-panel h2 {
+            font-size: 1.2rem;
+            margin: 0 0 18px;
+        }
+
+        .detail-panel p {
+            color: #a1a1aa;
+            line-height: 1.9;
+            margin-bottom: 14px;
+        }
+
+        .detail-panel p:last-child {
+            margin-bottom: 0;
+        }
+
+        .detail-list {
+            padding-left: 20px;
+            color: #a1a1aa;
+            line-height: 2;
+        }
+
+        .detail-list strong {
+            color: #e4e4e7;
+        }
+
+        .detail-stat {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            padding: 15px 0;
+            border-bottom: 1px solid #27272a;
+        }
+
+        .detail-stat:first-of-type {
+            padding-top: 0;
+        }
+
+        .detail-stat:last-child {
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .detail-stat strong {
+            font-size: 0.85rem;
+        }
+
+        .detail-stat span {
+            color: #a1a1aa;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .detail-callout {
+            padding: 20px;
+            border: 1px solid #27272a;
+            border-radius: 14px;
+            color: #a1a1aa;
+            font-size: 0.9rem;
+            line-height: 1.8;
+        }
+
+        .detail-back:hover,
+        .footer a:hover {
+            color: #67e8f9;
+        }
+
+        @media (max-width: 800px) {
+            .detail-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .detail-hero {
+                padding-top: 120px;
+            }
+
+            .detail-hero h1 {
+                letter-spacing: -1px;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .detail-panel {
+                padding: 20px;
+            }
+
+            .detail-actions {
+                flex-direction: column;
+            }
+
+            .detail-actions .btn {
+                text-align: center;
+            }
+
+            .medical-preview {
+                padding: 25px 15px;
+            }
+
+            .preview-stat {
+                min-width: 95px;
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body class="project-detail-page">
+<div class="aurora-cursor" aria-hidden="true"></div>
+    <!-- Navigation -->
+    <header class="navbar">
+        <div class="container navbar-inner">
+
+            <a class="logo" href="../index.html#home">
+                ATHAN<span>.</span>
+            </a>
+
+            <nav aria-label="Main navigation">
+                <ul class="nav-links">
+                    <li><a href="../index.html#home">Home</a></li>
+                    <li><a href="../index.html#about">About</a></li>
+                    <li><a href="../index.html#skills">Skills</a></li>
+                    <li><a href="../index.html#projects" class="active">Projects</a></li>
+                    <li><a href="../index.html#contact">Contact</a></li>
+                </ul>
+            </nav>
+
+            <a class="nav-contact" href="../index.html#contact">
+                Let's Talk ↗
+            </a>
+
+        </div>
+    </header>
+
+    <main>
+
+        <!-- Project Hero -->
+        <section class="detail-hero">
+            <div class="container">
+
+                <a class="detail-back" href="../index.html#projects">
+                    ← Back to all projects
+                </a>
+
+                <p class="detail-kicker">
+                    Web Application · Healthcare Management
+                </p>
+
+                <h1>General Medical Appointment System</h1>
+
+                <p class="detail-lead">
+                    The General Medical Appointment System is a web application
+                    concept designed to organize medical appointment scheduling.
+                    It aims to help patients request appointments and help
+                    authorized clinic personnel manage schedules, appointment
+                    records, and patient booking information through a
+                    centralized interface.
+                </p>
+
+                <div class="detail-tags">
+                    <span>Appointment Scheduling</span>
+                    <span>Patient Management</span>
+                    <span>Healthcare</span>
+                    <span>Web Development</span>
+                    <span>PHP</span>
+                    <span>MySQL</span>
+                </div>
+
+                <div class="detail-actions">
+                    <a class="btn btn-primary" href="../index.html#contact">
+                        Contact Me ↗
+                    </a>
+
+                    <a class="btn btn-secondary" href="../index.html#projects">
+                        Explore Other Projects
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Project Details -->
+        <section>
+            <div class="container detail-layout">
+
+                <div class="detail-main">
+
+                    <!-- Main screenshot -->
+                    <div class="project-cover">
+                        <img
+                            src="../Images/gen.png"
+                            alt="AUG DEPT. Management System dashboard screenshot"
+                            loading="lazy">
+                    </div>
+
+                    <!-- Overview -->
+                    <article class="detail-panel" id="overview">
+                        <h2>Project Overview</h2>
+
+                        <p>
+                            The General Medical Appointment System is a
+                            web-based application concept intended to simplify
+                            the process of requesting and organizing medical
+                            appointments. It provides a centralized approach
+                            to managing appointment details and schedules.
+                        </p>
+
+                        <p>
+                            Patients can use the system to submit appointment
+                            requests and provide relevant booking information.
+                            Authorized clinic personnel can review requests,
+                            manage appointment schedules, and update booking
+                            statuses, depending on the implemented features.
+                        </p>
+
+                        <p>
+                            The project aims to reduce the inconvenience of
+                            manually coordinating appointments and help make
+                            scheduling information easier to access and manage.
+                            It supports appointment administration rather than
+                            replacing professional medical consultation or
+                            clinical decision-making.
+                        </p>
+                    </article>
+
+                    <!-- Objectives -->
+                    <article class="detail-panel" id="objectives">
+                        <h2>Project Objectives</h2>
+
+                        <ul class="detail-list">
+                            <li>Organize medical appointment requests in one system.</li>
+                            <li>Make appointment scheduling easier to manage.</li>
+                            <li>Allow authorized personnel to review booking details.</li>
+                            <li>Help staff track appointment statuses.</li>
+                            <li>Reduce scheduling conflicts through organized records.</li>
+                            <li>Provide a clear interface for patients and clinic staff.</li>
+                        </ul>
+                    </article>
+
+                    <!-- Features -->
+                    <article class="detail-panel" id="features">
+                        <h2>Key Features</h2>
+
+                        <ul class="detail-list">
+                            <li>
+                                <strong>Appointment Booking</strong> —
+                                Allows patients to submit appointment requests
+                                with the required scheduling information.
+                            </li>
+
+                            <li>
+                                <strong>Appointment Scheduling</strong> —
+                                Organizes appointment dates and times to help
+                                clinic personnel coordinate bookings.
+                            </li>
+
+                            <li>
+                                <strong>Appointment Status Management</strong> —
+                                Helps authorized staff review and update
+                                requests, such as pending, approved, or cancelled,
+                                if these statuses are implemented.
+                            </li>
+
+                            <li>
+                                <strong>Patient Information</strong> —
+                                Organizes the patient details required for
+                                appointment coordination, subject to appropriate
+                                access restrictions.
+                            </li>
+
+                            <li>
+                                <strong>Appointment Records</strong> —
+                                Provides a central place to review existing
+                                bookings and their relevant details.
+                            </li>
+
+                            <li>
+                                <strong>Administrative Dashboard</strong> —
+                                Can present appointment summaries and scheduling
+                                information if a dashboard is included.
+                            </li>
+                        </ul>
+                    </article>
+
+                    <!-- Workflow -->
+                    <article class="detail-panel" id="workflow">
+                        <h2>System Workflow</h2>
+
+                        <p>
+                            <strong>01. Access the System</strong><br>
+                            The patient or authorized clinic staff member opens
+                            the application and accesses the functions available
+                            to their role.
+                        </p>
+
+                        <p>
+                            <strong>02. Submit an Appointment Request</strong><br>
+                            The patient enters the required booking details,
+                            such as appointment date, preferred time, and
+                            relevant contact information.
+                        </p>
+
+                        <p>
+                            <strong>03. Review the Request</strong><br>
+                            Authorized clinic personnel review the appointment
+                            request and check the available schedule.
+                        </p>
+
+                        <p>
+                            <strong>04. Update Appointment Status</strong><br>
+                            The request is confirmed, rescheduled, or declined
+                            according to the clinic's scheduling process and
+                            the functions implemented in the application.
+                        </p>
+
+                        <p>
+                            <strong>05. Manage Appointment Records</strong><br>
+                            The system maintains the relevant booking details
+                            so authorized users can review and manage scheduled
+                            appointments.
+                        </p>
+                    </article>
+
+                    <!-- Challenges -->
+                    <article class="detail-panel" id="challenges">
+                        <h2>Challenges &amp; Considerations</h2>
+
+                        <p>
+                            One important challenge is preventing scheduling
+                            conflicts. The system needs a clear process for
+                            reviewing availability and updating appointment
+                            statuses so the same time slot is not unintentionally
+                            assigned to multiple patients.
+                        </p>
+
+                        <p>
+                            Another consideration is data accuracy. Appointment
+                            dates, times, patient contact details, and booking
+                            statuses must be validated to reduce errors and
+                            make scheduling more reliable.
+                        </p>
+
+                        <p>
+                            Privacy and security are especially important in
+                            healthcare applications. Patient information should
+                            only be accessible to authorized users, and the
+                            system should avoid collecting sensitive medical
+                            details unless they are necessary and appropriately
+                            protected.
+                        </p>
+
+                        <p>
+                            The interface should also be straightforward for
+                            users with different levels of technical experience.
+                            Clear forms, readable appointment details, and
+                            helpful status indicators can make the booking
+                            process easier to understand.
+                        </p>
+                    </article>
+
+                    <!-- Screenshots -->
+                    <article class="detail-panel" id="screenshots">
+                        <h2>Project Screenshots</h2>
+
+                        <p>
+                            Add screenshots of your actual system here to
+                            demonstrate the user interface and implemented
+                            features.
+                        </p>
+
+                        <ul class="detail-list">
+                            <li>Patient appointment booking page</li>
+                            <li>Appointment schedule or booking list</li>
+                            <li>Appointment management dashboard</li>
+                            <li>Login page or staff interface, if available</li>
+                        </ul>
+
+                        <p>
+                            Replace this text with actual screenshot images
+                            when they are available.
+                        </p>
+                    </article>
+
+                    <!-- Outcome -->
+                    <article class="detail-panel" id="outcome">
+                        <h2>Project Outcome</h2>
+
+                        <p>
+                            The General Medical Appointment System is intended
+                            to provide a more organized way to coordinate
+                            appointment requests and maintain scheduling
+                            information. By centralizing booking records, it
+                            can help patients and clinic personnel follow a
+                            more structured appointment process.
+                        </p>
+
+                        <p>
+                            Add the actual project outcome here, including
+                            completed features, testing results, feedback,
+                            and improvements made during development.
+                        </p>
+                    </article>
+
+                </div>
+
+                <!-- Sidebar -->
+                <aside class="detail-sidebar">
+
+                    <article class="detail-panel">
+                        <h2>Project Information</h2>
+
+                        <div class="detail-stat">
+                            <strong>Project Name</strong>
+                            <span>General Medical Appointment System</span>
+                        </div>
+
+                        <div class="detail-stat">
+                            <strong>Project Type</strong>
+                            <span>Healthcare Appointment Management</span>
+                        </div>
+
+                        <div class="detail-stat">
+                            <strong>Platform</strong>
+                            <span>Web Application</span>
+                        </div>
+
+                        <div class="detail-stat">
+                            <strong>Status</strong>
+                            <span>Update to reflect the current project status</span>
+                        </div>
+
+                        <div class="detail-stat">
+                            <strong>My Role</strong>
+                            <span>Update with your actual responsibilities</span>
+                        </div>
+                    </article>
+
+                    <article class="detail-panel" id="technologies">
+                        <h2>Tools &amp; Technologies</h2>
+
+                        <ul class="detail-list">
+                            <li>HTML</li>
+                            <li>CSS</li>
+                            <li>JavaScript</li>
+                            <li>PHP</li>
+                            <li>MySQL</li>
+                            <li>XAMPP</li>
+                        </ul>
+
+                        <p>
+                            Keep only the technologies actually used to
+                            develop your system.
+                        </p>
+                    </article>
+
+                    <article class="detail-panel">
+                        <h2>Interested in This Project?</h2>
+
+                        <p>
+                            Contact me to learn more about this project,
+                            its development process, and my technical interests.
+                        </p>
+
+                        <a class="btn btn-primary"
+                           href="../index.html#contact">
+                            Get in Touch ↗
+                        </a>
+                    </article>
+
+                    <div class="detail-callout">
+                        This page uses a designed preview rather than a real
+                        system screenshot. Update the project details, features,
+                        technologies, and outcome to match what you actually built.
+                    </div>
+
+                </aside>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-inner">
+
+            <p>© 2026 Hexyl Athan N. Roblon.</p>
+
+            <a href="../index.html#home">
+                Back to home ↑
+            </a>
+
+        </div>
+    </footer>
+<script>
+  const aurora = document.querySelector(".aurora-cursor");
+
+  if (
+    aurora &&
+    window.matchMedia("(hover: hover) and (pointer: fine)").matches
+  ) {
+    let targetX = window.innerWidth / 2;
+    let targetY = window.innerHeight / 2;
+    let currentX = targetX;
+    let currentY = targetY;
+    let animationFrame = null;
+
+    function animateAurora() {
+      currentX += (targetX - currentX) * 0.1;
+      currentY += (targetY - currentY) * 0.1;
+
+      aurora.style.setProperty("--cursor-x", `${currentX}px`);
+      aurora.style.setProperty("--cursor-y", `${currentY}px`);
+
+      if (
+        Math.abs(targetX - currentX) > 0.2 ||
+        Math.abs(targetY - currentY) > 0.2
+      ) {
+        animationFrame = requestAnimationFrame(animateAurora);
+      } else {
+        currentX = targetX;
+        currentY = targetY;
+        animationFrame = null;
+      }
+    }
+
+    window.addEventListener("pointermove", (event) => {
+      targetX = event.clientX;
+      targetY = event.clientY;
+
+      aurora.classList.add("is-visible");
+
+      if (animationFrame === null) {
+        animationFrame = requestAnimationFrame(animateAurora);
+      }
+    });
+
+    document.documentElement.addEventListener("pointerleave", () => {
+      aurora.classList.remove("is-visible");
+    });
+
+    document.documentElement.addEventListener("pointerenter", () => {
+      aurora.classList.add("is-visible");
+    });
+  }
+</script>
+</body>
+</html>

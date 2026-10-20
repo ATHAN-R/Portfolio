@@ -1,0 +1,620 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#09090b">
+  <meta name="color-scheme" content="dark">
+
+  <meta name="description" content="A 2D medieval knight platformer developed with Unity and C#, featuring dungeon exploration, combat, enemies, traps, and level transitions.">
+
+  <meta name="author" content="Hexyl Athan N. Roblon">
+
+  <title>Medieval Knight Platformer | Hexyl Athan N. Roblon</title>
+<link rel="icon" type="image/png" href="../Images/logo.png">
+<link rel="apple-touch-icon" href="../Images/logo.png">
+  <link rel="stylesheet" href="../styles.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+<div class="aurora-cursor" aria-hidden="true"></div>
+  <!-- NAVIGATION -->
+  <header class="navbar">
+    <div class="container navbar-inner">
+
+      <a class="logo" href="../index.html#home">
+        ATHAN<span>.</span>
+      </a>
+
+      <nav aria-label="Main navigation">
+        <ul class="nav-links">
+          <li><a href="../index.html#home">Home</a></li>
+          <li><a href="../index.html#about">About</a></li>
+          <li><a href="../index.html#skills">Skills</a></li>
+          <li><a href="../index.html#projects" class="active">Projects</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <a class="nav-contact" href="../index.html#contact">
+        Let's Talk ↗
+      </a>
+
+    </div>
+  </header>
+
+  <main>
+
+    <!-- PROJECT HERO -->
+    <section class="hero">
+      <div class="container hero-content">
+
+        <a class="detail-back" href="../index.html#projects">
+          ← Back to Projects
+        </a>
+
+        <div class="hero-badge">
+          <span class="status-dot"></span>
+          Game Development · Unity 2D
+        </div>
+
+        <h1>
+          Medieval Knight<br>
+          <span class="gradient-text">Platformer.</span>
+        </h1>
+
+        <p class="hero-description">
+          An action-packed 2D medieval adventure where a knight
+          explores dangerous dungeons, fights monsters, avoids
+          deadly traps, and embarks on a mission to rescue a princess.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#overview">
+            Explore Project ↓
+          </a>
+
+          <a class="btn btn-secondary" href="../index.html#contact">
+            Contact Me ↗
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- GAMEPLAY PREVIEW -->
+    <section id="preview">
+      <div class="container">
+
+        <span class="section-label">Featured Project</span>
+
+        <h2 class="section-title">
+          Inside the Dungeon
+        </h2>
+
+        <p class="section-description">
+          Take a look at the medieval world, gameplay mechanics,
+          and systems behind this Unity 2D platformer.
+        </p>
+
+        <div class="project-preview">
+          <img
+            src="../Images/InsideKnight.png"
+            alt="Medieval Knight Platformer gameplay screenshot"
+            loading="lazy"
+          >
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PROJECT OVERVIEW -->
+    <section id="overview">
+      <div class="container">
+
+        <span class="section-label">About the Project</span>
+
+        <h2 class="section-title">
+          Building a Medieval Adventure
+        </h2>
+
+        <p class="section-description">
+          A 2D platformer project focused on interactive gameplay,
+          combat, environmental challenges, and story progression.
+        </p>
+
+        <div class="about-grid">
+
+          <div class="about-text">
+
+            <p>
+              Medieval Knight Platformer is a game development project
+              built using Unity and C#. The player takes control of a
+              medieval knight who must travel through dungeon levels
+              filled with enemies, traps, and challenging obstacles.
+            </p>
+
+            <p>
+              Players navigate the environment by running, jumping,
+              fighting enemies, and interacting with objects. As the
+              adventure progresses, they encounter increasingly
+              challenging situations and work toward completing
+              the knight's rescue mission.
+            </p>
+
+            <p>
+              The project combines gameplay programming, character
+              animation, 2D physics, tilemap level design, health
+              management, scene transitions, audio, and dialogue
+              into one game experience.
+            </p>
+
+          </div>
+
+          <div class="about-cards">
+
+            <article class="info-card">
+              <div class="card-icon" aria-hidden="true">⚔</div>
+              <h3>Combat System</h3>
+              <p>
+                Player attacks, enemy encounters, and character
+                animations that support gameplay interactions.
+              </p>
+            </article>
+
+            <article class="info-card">
+              <div class="card-icon" aria-hidden="true">♥</div>
+              <h3>Health System</h3>
+              <p>
+                Health and damage handling for the player and
+                environmental hazards.
+              </p>
+            </article>
+
+            <article class="info-card">
+              <div class="card-icon" aria-hidden="true">▦</div>
+              <h3>Dungeon Levels</h3>
+              <p>
+                Tilemap environments, interactive platforms,
+                obstacles, and transitions between areas.
+              </p>
+            </article>
+
+            <article class="info-card">
+              <div class="card-icon" aria-hidden="true">♜</div>
+              <h3>Boss Encounters</h3>
+              <p>
+                Special encounter sequences with dedicated
+                transitions and camera positioning.
+              </p>
+            </article>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- GAMEPLAY FEATURES -->
+    <section id="features">
+      <div class="container">
+
+        <span class="section-label">What It Includes</span>
+
+        <h2 class="section-title">
+          Gameplay Features
+        </h2>
+
+        <p class="section-description">
+          The game combines movement, combat, environmental
+          interactions, and supporting systems to create
+          an engaging platforming experience.
+        </p>
+
+        <div class="skills-grid">
+
+          <article class="skill-card">
+            <h3>Player Movement</h3>
+            <p class="section-description">
+              Horizontal movement, jumping, and character
+              control using Unity's 2D physics system.
+            </p>
+            <div class="skill-list">
+              <span class="skill-tag">Movement</span>
+              <span class="skill-tag">Jumping</span>
+              <span class="skill-tag">Rigidbody2D</span>
+            </div>
+          </article>
+
+          <article class="skill-card">
+            <h3>Combat & Enemies</h3>
+            <p class="section-description">
+              Attack inputs, enemy interactions, animation
+              states, and boss-room encounters.
+            </p>
+            <div class="skill-list">
+              <span class="skill-tag">Combat</span>
+              <span class="skill-tag">Animator</span>
+              <span class="skill-tag">Enemy AI</span>
+            </div>
+          </article>
+
+          <article class="skill-card">
+            <h3>Traps & Obstacles</h3>
+            <p class="section-description">
+              Environmental hazards and interactive objects
+              that challenge the player's timing and movement.
+            </p>
+            <div class="skill-list">
+              <span class="skill-tag">Spike Traps</span>
+              <span class="skill-tag">Falling Rocks</span>
+              <span class="skill-tag">Platforms</span>
+            </div>
+          </article>
+
+          <article class="skill-card">
+            <h3>Health & Damage</h3>
+            <p class="section-description">
+              Damage calculations, player health tracking,
+              and handling defeat conditions.
+            </p>
+            <div class="skill-list">
+              <span class="skill-tag">Player Health</span>
+              <span class="skill-tag">Damage</span>
+              <span class="skill-tag">Collision</span>
+            </div>
+          </article>
+
+          <article class="skill-card">
+            <h3>Level Transitions</h3>
+            <p class="section-description">
+              Door interactions, scene changes, fade effects,
+              and camera positioning between game areas.
+            </p>
+            <div class="skill-list">
+              <span class="skill-tag">Scenes</span>
+              <span class="skill-tag">Camera</span>
+              <span class="skill-tag">Transitions</span>
+            </div>
+          </article>
+
+          <article class="skill-card">
+            <h3>UI & Storytelling</h3>
+            <p class="section-description">
+              Main menus, pause controls, dialogue sequences,
+              and audio settings supporting the game experience.
+            </p>
+            <div class="skill-list">
+              <span class="skill-tag">Game UI</span>
+              <span class="skill-tag">Dialogue</span>
+              <span class="skill-tag">Audio</span>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- DEVELOPMENT PROCESS -->
+    <section id="development">
+      <div class="container">
+
+        <span class="section-label">Behind the Scenes</span>
+
+        <h2 class="section-title">
+          Development Process
+        </h2>
+
+        <p class="section-description">
+          The project uses separate scripts and Unity components
+          to organize the game's mechanics and interactions.
+        </p>
+
+        <div class="about-cards">
+
+          <article class="info-card">
+            <div class="card-icon" aria-hidden="true">01</div>
+            <h3>Gameplay Programming</h3>
+            <p>
+              C# scripts handle player input, movement,
+              health, damage, and interactions with
+              enemies and environmental objects.
+            </p>
+          </article>
+
+          <article class="info-card">
+            <div class="card-icon" aria-hidden="true">02</div>
+            <h3>Animation Integration</h3>
+            <p>
+              Unity Animator controllers coordinate
+              character movement, attacks, defense,
+              damage, and other animation states.
+            </p>
+          </article>
+
+          <article class="info-card">
+            <div class="card-icon" aria-hidden="true">03</div>
+            <h3>Level Implementation</h3>
+            <p>
+              Tilemaps, prefabs, colliders, and triggers
+              help build dungeon environments and
+              interactive gameplay elements.
+            </p>
+          </article>
+
+          <article class="info-card">
+            <div class="card-icon" aria-hidden="true">04</div>
+            <h3>Testing & Debugging</h3>
+            <p>
+              Gameplay testing helps identify issues with
+              collisions, animation timing, damage,
+              camera movement, and scene transitions.
+            </p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CHALLENGES -->
+    <section id="challenges">
+      <div class="container">
+
+        <span class="section-label">Problem Solving</span>
+
+        <h2 class="section-title">
+          Challenges & Learnings
+        </h2>
+
+        <div class="about-grid">
+
+          <div class="about-text">
+
+            <h3>Animation and Input</h3>
+
+            <p>
+              Coordinating player inputs with animation states
+              requires careful timing. Attacks, movement, and
+              defense must work together without causing
+              unintended animation transitions.
+            </p>
+
+            <h3>Physics and Collisions</h3>
+
+            <p>
+              Traps, moving objects, and platforms rely on
+              correct collision and trigger behavior. Testing
+              these interactions helps prevent unexpected
+              damage and movement problems.
+            </p>
+
+          </div>
+
+          <div class="about-text">
+
+            <h3>Camera and Scene Changes</h3>
+
+            <p>
+              Camera positioning becomes more challenging
+              when the player moves between dungeon rooms
+              or enters a boss area. Scene transitions need
+              to coordinate player placement and camera movement.
+            </p>
+
+            <h3>System Integration</h3>
+
+            <p>
+              Movement, health, traps, enemies, and scene
+              management must communicate correctly.
+              Organizing scripts by responsibility makes
+              debugging and future improvements easier.
+            </p>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- TECHNOLOGIES -->
+    <section id="technologies">
+      <div class="container">
+
+        <span class="section-label">Development Tools</span>
+
+        <h2 class="section-title">
+          Technologies Used
+        </h2>
+
+        <p class="section-description">
+          Tools and technologies used to implement the
+          game's mechanics, visuals, and interactions.
+        </p>
+
+        <div class="skill-list">
+          <span class="skill-tag">Unity</span>
+          <span class="skill-tag">C#</span>
+          <span class="skill-tag">Rigidbody2D</span>
+          <span class="skill-tag">Unity Animator</span>
+          <span class="skill-tag">Tilemaps</span>
+          <span class="skill-tag">Prefabs</span>
+          <span class="skill-tag">Unity UI</span>
+          <span class="skill-tag">Scene Management</span>
+          <span class="skill-tag">2D Collision Detection</span>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PROJECT INFORMATION -->
+    <section id="project-info">
+      <div class="container">
+
+        <span class="section-label">Project Details</span>
+
+        <h2 class="section-title">
+          Project Information
+        </h2>
+
+        <div class="about-cards">
+
+          <article class="info-card">
+            <h3>Project Type</h3>
+            <p>2D Action Platformer</p>
+          </article>
+
+          <article class="info-card">
+            <h3>Game Engine</h3>
+            <p>Unity</p>
+          </article>
+
+          <article class="info-card">
+            <h3>Programming Language</h3>
+            <p>C#</p>
+          </article>
+
+          <article class="info-card">
+            <h3>My Role</h3>
+            <p>
+              Gameplay scripting, system integration,
+              and level implementation.
+            </p>
+          </article>
+
+          <article class="info-card">
+            <h3>Project Status</h3>
+            <p>In Development</p>
+          </article>
+
+          <article class="info-card">
+            <h3>Main Objective</h3>
+            <p>
+              Develop a playable medieval adventure
+              with combat, dungeon exploration,
+              and story progression.
+            </p>
+          </article>
+
+        </div>
+
+        <p class="contact-note">
+          Update the project status and role to reflect
+          the current state of your game and your actual
+          contributions.
+        </p>
+
+      </div>
+    </section>
+
+    <!-- CONTACT CTA -->
+    <section>
+      <div class="container">
+
+        <div class="contact-box">
+
+          <span class="section-label">Let's Connect</span>
+
+          <h2 class="section-title">
+            Interested in My Work?
+          </h2>
+
+          <p class="section-description">
+            I'm interested in game development, programming,
+            and building interactive digital experiences.
+            Feel free to reach out to discuss my projects.
+          </p>
+
+          <a class="btn btn-primary" href="../index.html#contact">
+            Contact Me ↗
+          </a>
+
+          <div class="social-links">
+            <a href="../index.html#projects">
+              More Projects
+            </a>
+
+            <a href="../index.html#home">
+              Back to Home ↑
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-inner">
+
+      <p>
+        © 2026 Hexyl Athan N. Roblon. Built with HTML & CSS.
+      </p>
+
+      <a href="../index.html#home">
+        Back to top ↑
+      </a>
+
+    </div>
+  </footer>
+<script>
+  const aurora = document.querySelector(".aurora-cursor");
+
+  if (
+    aurora &&
+    window.matchMedia("(hover: hover) and (pointer: fine)").matches
+  ) {
+    let targetX = window.innerWidth / 2;
+    let targetY = window.innerHeight / 2;
+    let currentX = targetX;
+    let currentY = targetY;
+    let animationFrame = null;
+
+    function animateAurora() {
+      currentX += (targetX - currentX) * 0.1;
+      currentY += (targetY - currentY) * 0.1;
+
+      aurora.style.setProperty("--cursor-x", `${currentX}px`);
+      aurora.style.setProperty("--cursor-y", `${currentY}px`);
+
+      if (
+        Math.abs(targetX - currentX) > 0.2 ||
+        Math.abs(targetY - currentY) > 0.2
+      ) {
+        animationFrame = requestAnimationFrame(animateAurora);
+      } else {
+        currentX = targetX;
+        currentY = targetY;
+        animationFrame = null;
+      }
+    }
+
+    window.addEventListener("pointermove", (event) => {
+      targetX = event.clientX;
+      targetY = event.clientY;
+
+      aurora.classList.add("is-visible");
+
+      if (animationFrame === null) {
+        animationFrame = requestAnimationFrame(animateAurora);
+      }
+    });
+
+    document.documentElement.addEventListener("pointerleave", () => {
+      aurora.classList.remove("is-visible");
+    });
+
+    document.documentElement.addEventListener("pointerenter", () => {
+      aurora.classList.add("is-visible");
+    });
+  }
+</script>
+</body>
+</html>

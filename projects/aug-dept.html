@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#09090b">
+    <meta name="color-scheme" content="dark">
+
+    <meta name="description" content="AUG DEPT. Management System is a web-based inventory and sales management project featuring product management, stock monitoring, sales analytics, and role-based staff workflows.">
+
+    <title>AUG DEPT. Management System | Hexyl Athan N. Roblon</title>
+<link rel="icon" type="image/png" href="../Images/logo.png">
+<link rel="apple-touch-icon" href="../Images/logo.png">
+    <!-- Shared portfolio stylesheet -->
+    <link rel="stylesheet" href="../styles.css">
+
+    <!-- Portfolio typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Page-specific layout styles -->
+    <style>
+        .detail-hero {
+            padding: 140px 0 70px;
+        }
+
+        .detail-back {
+            display: inline-block;
+            margin-bottom: 32px;
+            text-decoration: none;
+            transition: color 0.25s ease;
+        }
+
+        .detail-kicker {
+            color: #a1a1aa;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 18px;
+        }
+
+        .detail-hero h1 {
+            max-width: 900px;
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            line-height: 1.08;
+            letter-spacing: -2px;
+            margin-bottom: 24px;
+        }
+
+        .detail-lead {
+            max-width: 760px;
+            color: #a1a1aa;
+            line-height: 1.9;
+            font-size: 1.05rem;
+        }
+
+        .detail-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 28px 0;
+        }
+
+        .detail-tags span {
+            padding: 8px 14px;
+            border: 1px solid #27272a;
+            border-radius: 50px;
+            color: #d4d4d8;
+            font-size: 0.8rem;
+        }
+
+        .detail-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 28px;
+        }
+
+        .detail-layout {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 290px;
+            gap: 26px;
+            align-items: start;
+            padding-top: 25px;
+            padding-bottom: 90px;
+        }
+
+        .detail-main,
+        .detail-sidebar {
+            display: grid;
+            gap: 22px;
+            min-width: 0;
+        }
+
+        .detail-panel {
+            padding: 28px;
+            border: 1px solid #27272a;
+            border-radius: 16px;
+            background: #111113;
+        }
+
+        .detail-panel h2 {
+            font-size: 1.2rem;
+            line-height: 1.4;
+            margin: 0 0 18px;
+        }
+
+        .detail-panel p {
+            color: #a1a1aa;
+            line-height: 1.9;
+            margin: 0 0 15px;
+        }
+
+        .detail-panel p:last-child {
+            margin-bottom: 0;
+        }
+
+        .detail-list {
+            padding-left: 20px;
+            color: #a1a1aa;
+            line-height: 2;
+        }
+
+        .detail-list li {
+            padding-left: 3px;
+            margin-bottom: 5px;
+        }
+
+        .detail-stat {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            padding: 15px 0;
+            border-bottom: 1px solid #27272a;
+        }
+
+        .detail-stat:first-of-type {
+            padding-top: 0;
+        }
+
+        .detail-stat:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .detail-stat strong {
+            font-size: 0.85rem;
+        }
+
+        .detail-stat span {
+            color: #a1a1aa;
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+
+        /* Main screenshot */
+        .project-cover {
+            overflow: hidden;
+            border: 1px solid #27272a;
+            border-radius: 16px;
+            background: #111113;
+        }
+
+        .project-cover img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        .cover-caption {
+            padding: 15px 18px;
+            color: #a1a1aa;
+            font-size: 0.85rem;
+            line-height: 1.7;
+            border-top: 1px solid #27272a;
+        }
+
+        /* Screenshot gallery */
+        .screenshot-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        .screenshot-card {
+            min-width: 0;
+            overflow: hidden;
+            border: 1px solid #27272a;
+            border-radius: 12px;
+            background: #151517;
+        }
+
+        .screenshot-card img {
+            display: block;
+            width: 100%;
+            aspect-ratio: 16 / 10;
+            object-fit: cover;
+            background: #18181b;
+        }
+
+        .screenshot-caption {
+            padding: 14px;
+        }
+
+        .screenshot-caption h3 {
+            font-size: 0.9rem;
+            margin: 0 0 6px;
+        }
+
+        .screenshot-caption p {
+            font-size: 0.8rem;
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        .detail-callout {
+            padding: 20px;
+            border: 1px solid #27272a;
+            border-radius: 14px;
+            color: #a1a1aa;
+            font-size: 0.9rem;
+            line-height: 1.8;
+        }
+
+        .detail-back:hover,
+        .footer a:hover {
+            color: #fff;
+        }
+
+        @media (max-width: 850px) {
+            .detail-layout {
+                grid-template-columns: minmax(0, 1fr);
+            }
+
+            .detail-sidebar {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .detail-sidebar .detail-callout {
+                grid-column: 1 / -1;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .detail-hero {
+                padding-top: 115px;
+            }
+
+            .detail-hero h1 {
+                letter-spacing: -1px;
+            }
+
+            .detail-panel {
+                padding: 21px;
+            }
+
+            .detail-sidebar {
+                grid-template-columns: minmax(0, 1fr);
+            }
+
+            .screenshot-grid {
+                grid-template-columns: minmax(0, 1fr);
+            }
+
+            .detail-actions {
+                flex-direction: column;
+            }
+
+            .detail-actions .btn {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body class="project-detail-page">
+<div class="aurora-cursor" aria-hidden="true"></div>
+    <!-- Navigation -->
+    <header class="navbar">
+        <div class="container navbar-inner">
+
+            <a class="logo" href="../index.html#home">
+                ATHAN<span>.</span>
+            </a>
+
+            <nav aria-label="Main navigation">
+                <ul class="nav-links">
+                    <li><a href="../index.html#home">Home</a></li>
+                    <li><a href="../index.html#about">About</a></li>
+                    <li><a href="../index.html#skills">Skills</a></li>
+                    <li><a href="../index.html#projects" class="active">Projects</a></li>
+                    <li><a href="../index.html#contact">Contact</a></li>
+                </ul>
+            </nav>
+
+            <a class="nav-contact" href="../index.html#contact">
+                Let's Talk ↗
+            </a>
+
+        </div>
+    </header>
+
+    <main>
+
+        <!-- Project introduction -->
+        <section class="detail-hero">
+            <div class="container">
+
+                <a class="detail-back" href="../index.html#projects">
+                    ← Back to all projects
+                </a>
+
+                <p class="detail-kicker">
+                    Web Application · Inventory &amp; Sales Management
+                </p>
+
+                <h1>AUG DEPT. Management System</h1>
+
+                <p class="detail-lead">
+                    A web-based inventory and sales management system designed
+                    to help a clothing business organize products, monitor
+                    stock levels, review sales activity, and manage staff
+                    workflows through a centralized interface.
+                </p>
+
+                <div class="detail-tags">
+                    <span>HTML</span>
+                    <span>CSS</span>
+                    <span>JavaScript</span>
+                    <span>PHP</span>
+                    <span>MySQL</span>
+                    <span>XAMPP</span>
+                    <span>Chart.js</span>
+                    <span>Tailwind CSS</span>
+                </div>
+
+                <div class="detail-actions">
+                    <a class="btn btn-primary" href="../index.html#contact">
+                        Contact Me ↗
+                    </a>
+
+                    <a class="btn btn-secondary" href="../index.html#projects">
+                        Explore Other Projects
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Project content -->
+        <section>
+            <div class="container detail-layout">
+
+                <div class="detail-main">
+
+                    <!-- Main screenshot -->
+                    <div class="project-cover">
+                        <img
+                            src="../Images/aug.png"
+                            alt="AUG DEPT. Management System dashboard screenshot"
+                            loading="lazy"
+                        >
+
+                        <div class="cover-caption">
+                            AUG DEPT. Management System — dashboard preview.
+                        </div>
+                    </div>
+
+                    <!-- Overview -->
+                    <article class="detail-panel" id="overview">
+                        <h2>Project Overview</h2>
+
+                        <p>
+                            The AUG DEPT. Management System is a web application
+                            concept designed to bring essential clothing-store
+                            management activities into one organized workspace.
+                            It provides a structured interface for accessing
+                            dashboard analytics, sales operations, inventory
+                            records, and user management.
+                        </p>
+
+                        <p>
+                            The system aims to make day-to-day operations easier
+                            by presenting product and stock information clearly
+                            and providing access to relevant sales summaries.
+                            Instead of navigating separate tools or relying
+                            entirely on manual records, authorized users can
+                            work through a centralized management interface.
+                        </p>
+
+                        <p>
+                            The interface also separates administrator
+                            responsibilities from staff activities. This helps
+                            keep administrative functions distinct from routine
+                            sales work.
+                        </p>
+                    </article>
+
+                    <!-- Features -->
+                    <article class="detail-panel" id="features">
+                        <h2>Key Features</h2>
+
+                        <ul class="detail-list">
+                            <li>
+                                <strong>Dashboard Analytics</strong> —
+                                View summarized sales and inventory information.
+                            </li>
+
+                            <li>
+                                <strong>Sales Management</strong> —
+                                Access the sales workflow and relevant sales
+                                records.
+                            </li>
+
+                            <li>
+                                <strong>Inventory Management</strong> —
+                                Organize product details, categories, stock
+                                quantities, and related records.
+                            </li>
+
+                            <li>
+                                <strong>Low-Stock Monitoring</strong> —
+                                Identify products that reach the configured
+                                stock threshold.
+                            </li>
+
+                            <li>
+                                <strong>Sales Charts and Filters</strong> —
+                                Explore sales activity using visual summaries
+                                and available date filters.
+                            </li>
+
+                            <li>
+                                <strong>User Management</strong> —
+                                Allow authorized administrators to manage staff
+                                accounts and their access.
+                            </li>
+
+                            <li>
+                                <strong>Role-Based Navigation</strong> —
+                                Separate administrative pages from the staff
+                                interface.
+                            </li>
+                        </ul>
+                    </article>
+
+                    <!-- Workflow -->
+                    <article class="detail-panel" id="workflow">
+                        <h2>System Workflow</h2>
+
+                        <p>
+                            <strong>01. Authentication</strong><br>
+                            The user signs in using their assigned credentials.
+                            The system identifies the user's role and directs
+                            them to the appropriate interface.
+                        </p>
+
+                        <p>
+                            <strong>02. Dashboard</strong><br>
+                            Authorized users review the relevant sales and
+                            inventory summaries available to their account.
+                        </p>
+
+                        <p>
+                            <strong>03. Inventory Operations</strong><br>
+                            Users with the appropriate permissions access
+                            product records, update stock information, and
+                            monitor low-stock items.
+                        </p>
+
+                        <p>
+                            <strong>04. Sales Operations</strong><br>
+                            Staff access the sales interface to perform
+                            supported sales tasks and maintain sales records.
+                        </p>
+
+                        <p>
+                            <strong>05. Reporting and Administration</strong><br>
+                            Administrators review available analytics and
+                            manage staff accounts or other administrative
+                            functions when required.
+                        </p>
+                    </article>
+
+                    <!-- Challenges -->
+                    <article class="detail-panel" id="challenges">
+                        <h2>Challenges &amp; Considerations</h2>
+
+                        <p>
+                            <strong>Organizing inventory data</strong><br>
+                            Product details and stock quantities must remain
+                            consistent and easy to access. A structured
+                            database and appropriate validation help reduce
+                            data-entry errors.
+                        </p>
+
+                        <p>
+                            <strong>Separating user permissions</strong><br>
+                            Administrators and staff have different
+                            responsibilities. The interface and backend
+                            should enforce the appropriate permissions so
+                            restricted functions are not available to
+                            unauthorized users.
+                        </p>
+
+                        <p>
+                            <strong>Presenting useful analytics</strong><br>
+                            Sales charts and filters should make information
+                            easier to interpret without overwhelming users
+                            with unnecessary details.
+                        </p>
+
+                        <p>
+                            <strong>Maintaining a consistent interface</strong><br>
+                            A clear sidebar, predictable navigation, readable
+                            labels, and consistent page layouts help users
+                            move between system modules more efficiently.
+                        </p>
+                    </article>
+
+                    <!-- Screenshot gallery -->
+                    <article class="detail-panel" id="screenshots">
+                        <h2>Project Screenshots</h2>
+
+                        <p>
+                            Explore the main interfaces of the AUG DEPT.
+                            Management System. Replace these image paths with
+                            screenshots captured from your actual application.
+                        </p>
+
+                        <div class="screenshot-grid">
+
+                            <div class="screenshot-card">
+                                <img
+                                    src="../Images/aug.png"
+                                    alt="AUG DEPT. dashboard and analytics"
+                                    loading="lazy"
+                                >
+
+                                <div class="screenshot-caption">
+                                    <h3>Dashboard</h3>
+                                    <p>
+                                        A centralized view of sales and
+                                        inventory summaries.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="screenshot-card">
+                                <img
+                                    src="../Images/Stockwise1.png"
+                                    alt="AUG DEPT. sales management interface"
+                                    loading="lazy"
+                                >
+
+                                <div class="screenshot-caption">
+                                    <h3>Inventory</h3>
+                                    <p>
+                                        Product information and stock records
+                                        in one interface.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="screenshot-card">
+                                <img
+                                    src="../Images/Stockwise2.png"
+                                    alt="AUG DEPT. inventory and product records"
+                                    loading="lazy"
+                                >
+
+                                <div class="screenshot-caption">
+                                    <h3>Sales Management</h3>
+                                    <p>
+                                        The interface for supported daily
+                                        sales operations.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="screenshot-card">
+                                <img
+                                    src="../Images/aug1.png"
+                                    alt="AUG DEPT. staff and user management"
+                                    loading="lazy"
+                                >
+
+                                <div class="screenshot-caption">
+                                    <h3>Login</h3>
+                                    <p>
+                                        Secure login for patients and administrators to access their respective accounts and features.
+                                    </p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </article>
+
+                    <!-- Outcome -->
+                    <article class="detail-panel">
+                        <h2>Project Outcome</h2>
+
+                        <p>
+                            The project brings inventory, sales, and
+                            administrative workflows together in a unified
+                            web interface. Its design emphasizes organized
+                            records, understandable analytics, and access
+                            appropriate to each user role.
+                        </p>
+
+                        <p>
+                            Add your actual implementation results, completed
+                            modules, and testing findings here to demonstrate
+                            what you achieved.
+                        </p>
+                    </article>
+
+                </div>
+
+                <!-- Project sidebar -->
+                <aside class="detail-sidebar">
+
+                    <article class="detail-panel">
+                        <h2>Project Information</h2>
+
+                        <div class="detail-stat">
+                            <strong>Project Type</strong>
+                            <span>Web Application</span>
+                        </div>
+
+                        <div class="detail-stat">
+                            <strong>Category</strong>
+                            <span>Inventory &amp; Sales Management</span>
+                        </div>
+
+                        <div class="detail-stat">
+                            <strong>Platform</strong>
+                            <span>Web / Desktop Browser</span>
+                        </div>
+
+                        <div class="detail-stat">
+                            <strong>Status</strong>
+                            <span>Update to reflect the actual project status</span>
+                        </div>
+
+                        <div class="detail-stat">
+                            <strong>My Role</strong>
+                            <span>Update to reflect your actual responsibilities</span>
+                        </div>
+                    </article>
+
+                    <!-- Technologies -->
+                    <article class="detail-panel" id="technologies">
+                        <h2>Tools &amp; Technologies</h2>
+
+                        <ul class="detail-list">
+                            <li>HTML — Page structure</li>
+                            <li>CSS — Styling and layout</li>
+                            <li>JavaScript — Interface interactions</li>
+                            <li>PHP — Server-side functionality</li>
+                            <li>MySQL — Database management</li>
+                            <li>XAMPP — Local development environment</li>
+                            <li>Chart.js — Data visualization</li>
+                            <li>Tailwind CSS — Utility-based styling, where used</li>
+                        </ul>
+                    </article>
+
+                    <article class="detail-panel">
+                        <h2>Interested in My Work?</h2>
+
+                        <p>
+                            Feel free to reach out to discuss this project,
+                            my development process, or other work in my
+                            portfolio.
+                        </p>
+
+                        <a class="btn btn-primary" href="../index.html#contact">
+                            Get in Touch ↗
+                        </a>
+                    </article>
+
+                    <div class="detail-callout">
+                        Project descriptions should reflect the actual
+                        implementation. Remove any features, tools, or
+                        workflows that were not completed.
+                    </div>
+
+                </aside>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-inner">
+            <p>© 2026 Hexyl Athan N. Roblon.</p>
+
+            <a href="../index.html#home">
+                Back to home ↑
+            </a>
+        </div>
+    </footer>
+<script>
+  const aurora = document.querySelector(".aurora-cursor");
+
+  if (
+    aurora &&
+    window.matchMedia("(hover: hover) and (pointer: fine)").matches
+  ) {
+    let targetX = window.innerWidth / 2;
+    let targetY = window.innerHeight / 2;
+    let currentX = targetX;
+    let currentY = targetY;
+    let animationFrame = null;
+
+    function animateAurora() {
+      currentX += (targetX - currentX) * 0.1;
+      currentY += (targetY - currentY) * 0.1;
+
+      aurora.style.setProperty("--cursor-x", `${currentX}px`);
+      aurora.style.setProperty("--cursor-y", `${currentY}px`);
+
+      if (
+        Math.abs(targetX - currentX) > 0.2 ||
+        Math.abs(targetY - currentY) > 0.2
+      ) {
+        animationFrame = requestAnimationFrame(animateAurora);
+      } else {
+        currentX = targetX;
+        currentY = targetY;
+        animationFrame = null;
+      }
+    }
+
+    window.addEventListener("pointermove", (event) => {
+      targetX = event.clientX;
+      targetY = event.clientY;
+
+      aurora.classList.add("is-visible");
+
+      if (animationFrame === null) {
+        animationFrame = requestAnimationFrame(animateAurora);
+      }
+    });
+
+    document.documentElement.addEventListener("pointerleave", () => {
+      aurora.classList.remove("is-visible");
+    });
+
+    document.documentElement.addEventListener("pointerenter", () => {
+      aurora.classList.add("is-visible");
+    });
+  }
+</script>
+</body>
+</html>

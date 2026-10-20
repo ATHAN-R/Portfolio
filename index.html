@@ -1,0 +1,468 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#09090b">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="Portfolio of Hexyl Athan N. Roblon, featuring web development, software development, UI design, and game development projects.">
+  <meta name="author" content="Hexyl Athan N. Roblon">
+  <meta name="keywords" content="Developer Portfolio, Web Development, Software Development, PHP, MySQL, Unity, C#">
+  <title>Hexyl Athan N. Roblon | Developer Portfolio</title>
+  <link rel="icon" type="image/png" href="Images/logo.png">
+  <link rel="apple-touch-icon" href="Images/logo.png">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* Small standalone additions for elements used in this HTML. */
+    .hero-inner { width: min(1120px, 90%); margin-inline: auto; }
+    .hero-badge .status-dot { flex: 0 0 auto; }
+    .about-cards .info-card { min-height: 190px; }
+    .project-preview .preview-label { color: #c4b5fd; font-size: clamp(1.2rem, 3vw, 2rem); font-weight: 800; letter-spacing: -1px; text-align: center; }
+    .project-preview .preview-subtitle { display: block; margin-top: 8px; color: #a1a1aa; font-size: .78rem; font-weight: 500; letter-spacing: 1px; text-align: center; }
+    .project-preview .preview-stack { display: grid; gap: 7px; width: min(290px, 100%); }
+    .preview-line { height: 9px; border-radius: 99px; background: #34303f; }
+    .preview-line:nth-child(2) { width: 78%; }
+    .preview-line:nth-child(3) { width: 58%; }
+    .project-window-body { text-align: center; }
+    .project-links a:focus-visible, .nav-links a:focus-visible, .btn:focus-visible, .social-links a:focus-visible { outline: 2px solid #c4b5fd; outline-offset: 4px; }
+    .contact-note { margin-top: 20px; color: #71717a; font-size: .82rem; }
+    @media (max-width: 650px) { .hero-inner { width: min(100% - 36px, 1120px); } }
+  </style>
+</head>
+<body>
+  <!-- Interactive aurora cursor effect -->
+  <div class="aurora-cursor" aria-hidden="true"></div>
+  <header class="navbar">
+    <div class="container navbar-inner">
+      <a class="logo" href="#home" aria-label="Athan, home">ATHAN<span>.</span></a>
+      <nav aria-label="Main navigation">
+        <ul class="nav-links">
+          <li><a href="#home" class="active">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <a class="nav-contact" href="#contact">Let's Talk ↗</a>
+    </div>
+  </header>
+
+  <main>
+    
+<section class="hero" id="home">
+  <div class="hero-inner hero-layout">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="status-dot" aria-hidden="true"></span>
+        Developer Portfolio
+      </div>
+
+      <p class="hero-eyebrow">BUILT WITH LOGIC. DRIVEN BY CREATIVITY.</p>
+
+      <h1>
+        I'm <span class="gradient-text">ATHAN.</span>
+      </h1>
+
+      <p class="hero-description">
+        I'm a developer driven by creativity, curiosity, and the challenge
+        of turning ideas into reality. I build digital experiences that
+        blend functionality with thoughtful design, from web applications
+        and software systems to interactive games. Every project is a
+        chance to solve problems, learn something new, and bring ideas to life.
+      </p>
+
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#projects">
+          Explore My Work <span aria-hidden="true">↗</span>
+        </a>
+        <a class="btn btn-secondary" href="#contact">
+          Get In Touch
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-portrait">
+      <div class="portrait-glow" aria-hidden="true"></div>
+      <div class="portrait-frame">
+        <img
+          src="Images/12.png"
+          alt="Portrait of Hexyl Athan N. Roblon"
+          class="portrait-image"
+        >
+      </div>
+      <div class="portrait-caption">
+        <span class="portrait-caption-dot"></span>
+        <span>DESIGN · CODE · CREATE</span>
+      </div>
+      <span class="portrait-decoration" aria-hidden="true">A.</span>
+    </div>
+  </div>
+</section>
+
+
+    <section id="about">
+      <div class="container">
+        <span class="section-label">About Me</span>
+        <div class="about-grid">
+          <div class="about-text">
+            <h2 class="section-title">Building ideas into<br><span class="gradient-text">digital experiences.</span></h2>
+            <p>I'm Hexyl Athan N. Roblon, an aspiring developer interested in web development, software development, interface design, and game development.</p>
+            <p>I enjoy exploring how design and technology work together to solve real problems. My projects help me develop my technical skills, learn new tools, and create experiences that are clear and easy to use.</p>
+            <p>I'm always open to learning, collaborating, and taking on new challenges.</p>
+          </div>
+          <div class="about-cards">
+            <article class="info-card">
+              <div class="card-icon" aria-hidden="true">⌘</div>
+              <h3>Web Development</h3>
+              <p>Responsive websites and practical web applications built around user needs.</p>
+            </article>
+            <article class="info-card">
+              <div class="card-icon" aria-hidden="true">▧</div>
+              <h3>Software Systems</h3>
+              <p>Organized systems for managing information, workflows, and business tasks.</p>
+            </article>
+            <article class="info-card">
+              <div class="card-icon" aria-hidden="true">✳</div>
+              <h3>UI & UX Design</h3>
+              <p>Clean layouts and thoughtful interactions that make digital products easier to use.</p>
+            </article>
+            <article class="info-card">
+              <div class="card-icon" aria-hidden="true">⚔</div>
+              <h3>Game Development</h3>
+              <p>Interactive 2D gameplay, mechanics, animations, and level design with Unity.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="skills-section" id="skills">
+      <div class="container">
+        <span class="section-label">What I Work With</span>
+        <h2 class="section-title">Skills & Technologies</h2>
+        <p class="section-description">Tools and technologies I use or explore while developing projects.</p>
+        <div class="skills-grid">
+          <article class="skill-card">
+            <h3>Frontend Development</h3>
+            <div class="skill-list">
+              <span class="skill-tag">HTML</span><span class="skill-tag">CSS</span><span class="skill-tag">JavaScript</span><span class="skill-tag">Responsive Design</span><span class="skill-tag">Tailwind CSS</span>
+            </div>
+          </article>
+          <article class="skill-card">
+            <h3>Backend & Database</h3>
+            <div class="skill-list">
+              <span class="skill-tag">PHP</span><span class="skill-tag">MySQL</span><span class="skill-tag">XAMPP</span>
+            </div>
+          </article>
+          <article class="skill-card">
+            <h3>Software & Creative Tools</h3>
+            <div class="skill-list">
+              <span class="skill-tag">C#</span><span class="skill-tag">Unity</span><span class="skill-tag">Figma</span><span class="skill-tag">UI Design</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <span class="section-label">Selected Work</span>
+        <h2 class="section-title">Projects I've Worked On</h2>
+        <p class="section-description">A selection of academic and personal projects exploring software, design, and interactive experiences.</p>
+        <div class="projects-grid">
+          <article class="project-card">
+            <a href="projects/aug-dept.html">
+            <div class="project-preview">
+              <div class="project-window">
+                <div class="project-window-header"><span class="window-dot"></span><span class="window-dot"></span><span class="window-dot"></span></div>
+                <div class="project-window-body">
+                 <img src="Images/aug1.png" alt="AUG FIT AI-Powered Virtual Try-On" class="project-preview-image"> </div>
+              </div>
+            </div>
+            <div class="project-content">
+              <div class="project-meta"><span class="project-category">Web Application</span><span class="project-year">Academic Project</span></div>
+              <h3>AUG DEPT.</h3>
+              <p>A web-based inventory and sales management system concept with role-based access, dashboard analytics, and tools for managing products and stock.</p>
+              <div class="project-tags"><span>PHP</span><span>MySQL</span><span>Tailwind CSS</span><span>Chart.js</span></div>
+              <div class="project-links"><a href="projects/aug-dept.html">Project Details <span aria-hidden="true">↗</span></a></div>
+            </a>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <a href="projects/knight-platformer.html">
+            <div class="project-preview">
+              <div class="project-window">
+                <div class="project-window-header"><span class="window-dot"></span><span class="window-dot"></span><span class="window-dot"></span></div>
+                <div class="project-window-body">
+                 <img src="Images/knight.png" alt="AUG FIT AI-Powered Virtual Try-On" class="project-preview-image"> </div>
+              </div>
+            </div>
+            <div class="project-content">
+              <div class="project-meta"><span class="project-category">Game Development</span><span class="project-year">Unity Project</span></div>
+              <h3>Knights Quest</h3>
+              <p>A 2D platformer concept where a knight explores dungeon levels, fights enemies, avoids traps, and progresses through a rescue adventure.</p>
+              <div class="project-tags"><span>Unity</span><span>C#</span><span>2D Animation</span><span>Game Mechanics</span></div>
+              <div class="project-links"><a href="projects/knight-platformer.html">Project Details <span aria-hidden="true">↗</span></a></div>
+            </a>
+            </div>
+          </article>
+
+          <article class="project-card">
+    <a href="projects/general.html">
+        <div class="project-preview">
+            <div class="project-window">
+                <div class="project-window-header">
+                    <span class="window-dot"></span>
+                    <span class="window-dot"></span>
+                    <span class="window-dot"></span>
+                </div>
+
+                <div class="project-window-body">
+                    <img
+                        src="Images/GEN.png"
+                        alt="General Medical Appointment System"
+                        class="project-preview-image"
+                    >
+                </div>
+            </div>
+        </div>
+
+        <div class="project-content">
+            <div class="project-meta">
+                <span class="project-category">Web Application</span>
+                <span class="project-year">Academic Project</span>
+            </div>
+
+            <h3>GENERAL MEDICAL APPOINTMENT SYSTEM</h3>
+
+            <p>
+                A web-based medical appointment management system designed
+                to help patients schedule appointments and help clinic staff
+                manage bookings, patient information, and appointment schedules.
+            </p>
+
+            <div class="project-tags">
+                <span>HTML</span>
+                <span>CSS</span>
+                <span>JavaScript</span>
+                <span>PHP</span>
+                <span>MySQL</span>
+            </div>
+
+            <div class="project-links"><a href="projects/general.html">Project Details <span aria-hidden="true">↗</span></a></div>
+        </div>
+    </a>
+</article>
+<article class="project-card">
+            <a href="projects/stock.html">
+            <div class="project-preview">
+              <div class="project-window">
+                <div class="project-window-header"><span class="window-dot"></span><span class="window-dot"></span><span class="window-dot"></span></div>
+                <div class="project-window-body">
+                 <img src="Images/Stockwise.png" alt="AUG FIT AI-Powered Virtual Try-On" class="project-preview-image"> </div>
+              </div>
+            </div>
+            <div class="project-content">
+              <div class="project-meta"><span class="project-category">Web Application</span><span class="project-year">Academic Project</span></div>
+              <h3>Stockwise</h3>
+              <p>A web-based inventory and sales management system concept with role-based access, dashboard analytics, and tools for managing products and stock.</p>
+              <div class="project-tags"><span>Python</span><span>Html</span><span>Sqlite</span></div>
+              <div class="project-links"><a href="projects/stock.html">Project Details <span aria-hidden="true">↗</span></a></div>
+            </a>
+            </div>
+          </article>
+          <article class="project-card">
+            <a href="projects/ui-ux-design.html">
+            <div class="project-preview">
+              <div class="project-window">
+                <div class="project-window-header"><span class="window-dot"></span><span class="window-dot"></span><span class="window-dot"></span></div>
+                <div class="project-window-body">
+                 <img src="Images/UI.png" alt="AUG FIT AI-Powered Virtual Try-On" class="project-preview-image"> </div>
+              </div>
+            </div>
+            <div class="project-content">
+              <div class="project-meta"><span class="project-category">UI/UX Design</span><span class="project-year">Design Work</span></div>
+              <h3>Interface Design & Prototypes</h3>
+              <p>Interface concepts and prototypes focused on clear navigation, consistent visual design, and straightforward user flows.</p>
+              <div class="project-tags"><span>Figma</span><span>Wireframes</span><span>Prototyping</span><span>Design Systems</span></div>
+              <div class="project-links"><a href="projects/ui-ux-design.html">Project Details <span aria-hidden="true">↗</span></a></div>
+            </a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-section" id="contact">
+      <div class="container">
+        <div class="contact-box">
+          <span class="section-label">Get In Touch</span>
+          <h2 class="section-title">Have a project in mind?</h2>
+          <p class="section-description">I'm open to discussing ideas, collaborations, and opportunities to learn and build something useful together.</p>
+          <a class="btn btn-primary" href="mailto:">Send Me an Email <span aria-hidden="true">↗</span></a>
+          
+<div class="social-links" aria-label="Social profiles">
+    <a href="https://github.com/ATHAN-R"
+       target="_blank"
+       rel="noopener noreferrer"
+       aria-label="GitHub profile">
+        GitHub
+    </a>
+
+    <a href="https://www.linkedin.com/in/hexyl-roblon-71b061445/?isSelfProfile=true"
+       target="_blank"
+       rel="noopener noreferrer"
+       aria-label="LinkedIn profile">
+        LinkedIn
+    </a>
+</div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p>© <span id="year">2026</span> Hexyl Athan N. Roblon. Built with HTML & CSS.</p>
+      <a href="#home">Back to top ↑</a>
+    </div>
+  </footer>
+  
+<script>
+  const aurora = document.querySelector(".aurora-cursor");
+
+  if (
+    aurora &&
+    window.matchMedia("(hover: hover) and (pointer: fine)").matches
+  ) {
+    let targetX = window.innerWidth / 2;
+    let targetY = window.innerHeight / 2;
+    let currentX = targetX;
+    let currentY = targetY;
+    let animationFrame = null;
+
+    function animateAurora() {
+      currentX += (targetX - currentX) * 0.1;
+      currentY += (targetY - currentY) * 0.1;
+
+      aurora.style.setProperty("--cursor-x", `${currentX}px`);
+      aurora.style.setProperty("--cursor-y", `${currentY}px`);
+
+      if (
+        Math.abs(targetX - currentX) > 0.2 ||
+        Math.abs(targetY - currentY) > 0.2
+      ) {
+        animationFrame = requestAnimationFrame(animateAurora);
+      } else {
+        currentX = targetX;
+        currentY = targetY;
+        animationFrame = null;
+      }
+    }
+
+    window.addEventListener("pointermove", (event) => {
+      targetX = event.clientX;
+      targetY = event.clientY;
+
+      aurora.classList.add("is-visible");
+
+      if (animationFrame === null) {
+        animationFrame = requestAnimationFrame(animateAurora);
+      }
+    });
+
+    document.documentElement.addEventListener("pointerleave", () => {
+      aurora.classList.remove("is-visible");
+    });
+
+    document.documentElement.addEventListener("pointerenter", () => {
+      aurora.classList.add("is-visible");
+    });
+  }
+  // Highlight the navigation link for the section being viewed
+  const pageSections = document.querySelectorAll(
+    "#home, #about, #skills, #projects, #contact"
+  );
+
+  const navLinks = document.querySelectorAll(".nav-links a");
+
+  function updateActiveNavigation() {
+    const marker = window.innerHeight * 0.35;
+    let currentSection = "home";
+
+    pageSections.forEach((section) => {
+      const sectionTop = section.getBoundingClientRect().top;
+
+      if (sectionTop <= marker) {
+        currentSection = section.id;
+      }
+    });
+
+    // Keep Contact active when the user reaches the bottom
+    if (
+      window.innerHeight + window.scrollY >=
+      document.documentElement.scrollHeight - 5
+    ) {
+      currentSection = "contact";
+    }
+
+    navLinks.forEach((link) => {
+      const isActive =
+        link.getAttribute("href") === `#${currentSection}`;
+
+      link.classList.toggle("active", isActive);
+
+      if (isActive) {
+        link.setAttribute("aria-current", "location");
+      } else {
+        link.removeAttribute("aria-current");
+      }
+    });
+  }
+
+  let navigationFrame = null;
+
+  window.addEventListener(
+    "scroll",
+    () => {
+      if (navigationFrame !== null) return;
+
+      navigationFrame = requestAnimationFrame(() => {
+        updateActiveNavigation();
+        navigationFrame = null;
+      });
+    },
+    { passive: true }
+  );
+
+  window.addEventListener("resize", updateActiveNavigation);
+  window.addEventListener("load", updateActiveNavigation);
+
+  // Update the active link immediately when a navigation link is clicked
+  navLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      const targetId = link.getAttribute("href").slice(1);
+
+      navLinks.forEach((item) => {
+        const isActive = item === link;
+        item.classList.toggle("active", isActive);
+
+        if (isActive) {
+          item.setAttribute("aria-current", "location");
+        } else {
+          item.removeAttribute("aria-current");
+        }
+      });
+    });
+  });
+
+  updateActiveNavigation();
+</script>
+</body>
+</html>

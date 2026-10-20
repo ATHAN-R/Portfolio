@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#09090b">
+    <meta name="color-scheme" content="dark">
+
+    <meta
+        name="description"
+        content="Explore interface design concepts, wireframes, UI layouts, and interactive prototypes by Hexyl Athan N. Roblon."
+    >
+
+    <title>Interface Design &amp; Prototypes | Hexyl Athan N. Roblon</title>
+<link rel="icon" type="image/png" href="../Images/logo.png">
+<link rel="apple-touch-icon" href="../Images/logo.png">
+    <!-- Shared portfolio stylesheet -->
+    <link rel="stylesheet" href="../styles.css">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+        /* Project detail page */
+
+        .detail-hero {
+            padding: 150px 0 70px;
+        }
+
+        .detail-back {
+            display: inline-block;
+            margin-bottom: 35px;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .detail-kicker {
+            color: #a1a1aa;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.8rem;
+            margin-bottom: 18px;
+        }
+
+        .detail-hero h1 {
+            max-width: 900px;
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            line-height: 1.08;
+            letter-spacing: -2px;
+            margin-bottom: 25px;
+        }
+
+        .detail-lead {
+            max-width: 750px;
+            color: #a1a1aa;
+            font-size: 1.05rem;
+            line-height: 1.9;
+        }
+
+        .detail-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 28px 0;
+        }
+
+        .detail-tags span {
+            padding: 8px 14px;
+            border: 1px solid #27272a;
+            border-radius: 50px;
+            color: #d4d4d8;
+            font-size: 0.8rem;
+        }
+
+        .detail-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 30px;
+        }
+
+        .detail-layout {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 300px;
+            gap: 28px;
+            align-items: start;
+            padding-top: 30px;
+            padding-bottom: 100px;
+        }
+
+        .detail-main,
+        .detail-sidebar {
+            display: grid;
+            gap: 22px;
+            min-width: 0;
+        }
+
+        .detail-preview {
+            overflow: hidden;
+            border: 1px solid #27272a;
+            border-radius: 16px;
+            background: #111113;
+        }
+
+        .detail-preview img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        .detail-panel {
+            padding: 28px;
+            border: 1px solid #27272a;
+            border-radius: 16px;
+            background: #111113;
+            scroll-margin-top: 100px;
+        }
+
+        .detail-panel h2 {
+            font-size: 1.2rem;
+            margin: 0 0 18px;
+        }
+
+        .detail-panel p {
+            color: #a1a1aa;
+            line-height: 1.9;
+            margin-bottom: 14px;
+        }
+
+        .detail-panel p:last-child {
+            margin-bottom: 0;
+        }
+
+        .detail-list {
+            padding-left: 20px;
+            color: #a1a1aa;
+            line-height: 2;
+        }
+
+        .detail-list li {
+            margin-bottom: 5px;
+        }
+
+        .detail-list strong {
+            color: #e4e4e7;
+        }
+
+        .detail-stat {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            padding: 15px 0;
+            border-bottom: 1px solid #27272a;
+        }
+
+        .detail-stat:first-of-type {
+            padding-top: 0;
+        }
+
+        .detail-stat:last-child {
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .detail-stat strong {
+            font-size: 0.85rem;
+        }
+
+        .detail-stat span {
+            color: #a1a1aa;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .detail-callout {
+            padding: 20px;
+            border: 1px solid #27272a;
+            border-radius: 14px;
+            color: #a1a1aa;
+            font-size: 0.9rem;
+            line-height: 1.8;
+        }
+
+        .screenshot-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px;
+            margin-top: 22px;
+        }
+
+        .screenshot-item {
+            min-width: 0;
+            overflow: hidden;
+            border: 1px solid #27272a;
+            border-radius: 12px;
+            background: #09090b;
+        }
+
+        .screenshot-item a {
+            display: block;
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .screenshot-item img {
+            display: block;
+            width: 100%;
+            height: auto;
+            aspect-ratio: 16 / 10;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .screenshot-item a:hover img {
+            transform: scale(1.03);
+        }
+
+        .screenshot-caption {
+            padding: 12px 14px;
+            color: #a1a1aa;
+            font-size: 0.85rem;
+        }
+
+        .detail-back:hover,
+        .footer a:hover {
+            color: #fff;
+        }
+
+        .detail-panel a:not(.btn) {
+            color: #d4d4d8;
+        }
+
+        .detail-panel a:not(.btn):hover {
+            color: #fff;
+        }
+
+        @media (max-width: 800px) {
+            .detail-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .detail-hero {
+                padding-top: 120px;
+            }
+
+            .detail-hero h1 {
+                letter-spacing: -1px;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .detail-panel {
+                padding: 20px;
+            }
+
+            .detail-actions {
+                flex-direction: column;
+            }
+
+            .detail-actions .btn {
+                text-align: center;
+            }
+
+            .screenshot-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body class="project-detail-page">
+<div class="aurora-cursor" aria-hidden="true"></div>
+    <!-- Navigation -->
+    <header class="navbar">
+        <div class="container navbar-inner">
+
+            <a class="logo" href="../index.html#home">
+                ATHAN<span>.</span>
+            </a>
+
+            <nav aria-label="Main navigation">
+                <ul class="nav-links">
+                    <li><a href="../index.html#home">Home</a></li>
+                    <li><a href="../index.html#about">About</a></li>
+                    <li><a href="../index.html#skills">Skills</a></li>
+                    <li><a href="../index.html#projects" class="active">Projects</a></li>
+                    <li><a href="../index.html#contact">Contact</a></li>
+                </ul>
+            </nav>
+
+            <a class="nav-contact" href="../index.html#contact">
+                Let's Talk ↗
+            </a>
+
+        </div>
+    </header>
+
+    <main>
+
+        <!-- Project Hero -->
+        <section class="detail-hero">
+            <div class="container">
+
+                <a class="detail-back" href="../index.html#projects">
+                    ← Back to all projects
+                </a>
+
+                <p class="detail-kicker">
+                    UI/UX Design · Interface Development
+                </p>
+
+                <h1>Interface Design &amp; Prototypes</h1>
+
+                <p class="detail-lead">
+                    A collection of interface concepts, wireframes, and
+                    prototypes focused on clear navigation, consistent
+                    visual hierarchy, and practical user experiences.
+                    This project showcases the process of turning ideas
+                    and system requirements into organized digital interfaces.
+                </p>
+
+                <div class="detail-tags">
+                    <span>Figma</span>
+                    <span>UI Design</span>
+                    <span>UX Design</span>
+                    <span>Wireframing</span>
+                    <span>Prototyping</span>
+                </div>
+
+                <div class="detail-actions">
+                    <a class="btn btn-primary" href="../index.html#contact">
+                        Contact Me ↗
+                    </a>
+
+                    <a class="btn btn-secondary" href="../index.html#projects">
+                        Explore Other Projects
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Project Details -->
+        <section>
+            <div class="container detail-layout">
+
+                <div class="detail-main">
+
+                    <!-- Main Project Preview -->
+                    <div class="detail-preview">
+                        <img
+                            src="../Images/UI.png"
+                            alt="Interface design and prototype project preview"
+                        >
+                    </div>
+
+                    <!-- 1. Overview -->
+                    <article class="detail-panel" id="overview">
+                        <h2>Project Overview</h2>
+
+                        <p>
+                            Interface Design &amp; Prototypes is a design
+                            project showcasing the planning and visual
+                            development of digital application interfaces.
+                            It focuses on presenting information clearly
+                            and helping users understand how to navigate
+                            a system.
+                        </p>
+
+                        <p>
+                            The design process considers the purpose of each
+                            screen, the information users need, and the
+                            interactions connecting different parts of an
+                            application. Wireframes and mockups help establish
+                            the structure before a design is presented as
+                            an interactive prototype.
+                        </p>
+
+                        <p>
+                            The collection may include mobile interfaces,
+                            dashboards, academic system designs, and other
+                            digital product concepts that reflect the
+                            requirements of each project.
+                        </p>
+                    </article>
+
+                    <!-- 2. Features -->
+                    <article class="detail-panel" id="features">
+                        <h2>Key Features</h2>
+
+                        <ul class="detail-list">
+                            <li>
+                                <strong>Wireframes:</strong>
+                                Basic screen structures used to plan content
+                                placement and page organization.
+                            </li>
+
+                            <li>
+                                <strong>Visual Mockups:</strong>
+                                Detailed screen designs with coordinated
+                                typography, colors, spacing, and components.
+                            </li>
+
+                            <li>
+                                <strong>Consistent UI Components:</strong>
+                                Reusable interface elements that help maintain
+                                a consistent design across screens.
+                            </li>
+
+                            <li>
+                                <strong>User Flow Planning:</strong>
+                                Organized paths showing how users move through
+                                an application to complete tasks.
+                            </li>
+
+                            <li>
+                                <strong>Interactive Prototypes:</strong>
+                                Connected screens that demonstrate intended
+                                navigation and interactions.
+                            </li>
+
+                            <li>
+                                <strong>Responsive Design Considerations:</strong>
+                                Layout planning for different screen sizes
+                                where required by the project.
+                            </li>
+                        </ul>
+                    </article>
+
+                    <!-- 3. Workflow -->
+                    <article class="detail-panel" id="workflow">
+                        <h2>Design Workflow</h2>
+
+                        <p>
+                            <strong>01. Requirements Analysis</strong><br>
+                            Identify the application's purpose, intended
+                            users, essential functions, and information
+                            requirements.
+                        </p>
+
+                        <p>
+                            <strong>02. User Flow Planning</strong><br>
+                            Map the steps users take to navigate the system
+                            and complete common tasks.
+                        </p>
+
+                        <p>
+                            <strong>03. Wireframing</strong><br>
+                            Arrange the main interface elements and determine
+                            the structure of each screen before applying
+                            detailed styling.
+                        </p>
+
+                        <p>
+                            <strong>04. Visual Interface Design</strong><br>
+                            Apply typography, colors, spacing, hierarchy,
+                            and reusable components to create a cohesive
+                            visual presentation.
+                        </p>
+
+                        <p>
+                            <strong>05. Prototype Development</strong><br>
+                            Connect the designed screens to demonstrate
+                            the intended navigation and user interactions.
+                        </p>
+
+                        <p>
+                            <strong>06. Review and Refinement</strong><br>
+                            Review the design for clarity and consistency,
+                            then revise areas that may be confusing or
+                            difficult to navigate.
+                        </p>
+                    </article>
+
+                    <!-- 4. Challenges -->
+                    <article class="detail-panel" id="challenges">
+                        <h2>Challenges &amp; Considerations</h2>
+
+                        <p>
+                            One challenge in interface design is balancing
+                            visual appeal with usability. A visually polished
+                            screen must also communicate information clearly
+                            and help users find the functions they need.
+                        </p>
+
+                        <p>
+                            Maintaining consistency across screens is another
+                            consideration. Differences in typography, spacing,
+                            button styles, or navigation patterns can make
+                            an application feel confusing or disconnected.
+                        </p>
+
+                        <p>
+                            Screen space and information hierarchy also need
+                            careful planning, particularly when designing
+                            interfaces for smaller devices. The design should
+                            prioritize important information without making
+                            the interface feel crowded.
+                        </p>
+
+                        <p>
+                            Prototyping helps communicate the intended user
+                            experience before implementation. However, a
+                            prototype demonstrates a proposed interaction
+                            and does not necessarily mean the final application
+                            functionality has already been developed.
+                        </p>
+                    </article>
+
+                    <!-- 5. Screenshots -->
+                    <article class="detail-panel" id="screenshots">
+                        <h2>Project Screenshots</h2>
+
+                        <p>
+                            Explore the interface design preview below.
+                            Add more screenshots of your actual wireframes,
+                            mockups, and prototypes to demonstrate the
+                            design process and final screens.
+                        </p>
+
+                        <div class="screenshot-grid">
+
+                            <div class="screenshot-item">
+                                <a
+                                    href="../Images/UI.png"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    aria-label="Open the main interface design image"
+                                >
+                                    <img
+                                        src="../Images/UI.png"
+                                        alt="Aug Fit Prototype"
+                                        loading="lazy"
+                                    >
+                                </a>
+
+                                <div class="screenshot-caption">
+                                    Aug Fit Prototype
+                                </div>
+                            </div>
+
+                            <div class="screenshot-item">
+                                <a
+                                    href="../Images/ui1.png"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    aria-label="Open the main interface design image"
+                                >
+                                    <img
+                                        src="../Images/ui1.png"
+                                        alt="Restaurant Reservation Prototype"
+                                        loading="lazy"
+                                    >
+                                </a>
+
+                                <div class="screenshot-caption">
+                                    Restaurant Reservation Prototype
+                                </div>
+                            </div>
+                            <div class="screenshot-item">
+                                <a
+                                    href="../Images/ui2.png"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    aria-label="Open the main interface design image"
+                                >
+                                    <img
+                                        src="../Images/ui2.png"
+                                        alt="PG Book Website"
+                                        loading="lazy"
+                                    >
+                                </a>
+
+                                <div class="screenshot-caption">
+                                    PG Book Website Prototype
+                                </div>
+                            </div>
+
+                        </div>
+                    </article>
+
+                </div>
+
+                <!-- Sidebar -->
+                <aside class="detail-sidebar">
+
+                    <article class="detail-panel">
+                        <h2>Project Information</h2>
+
+                        <div class="detail-stat">
+                            <strong>Project Name</strong>
+                            <span>Interface Design &amp; Prototypes</span>
+                        </div>
+
+                        <div class="detail-stat">
+                            <strong>Project Type</strong>
+                            <span>UI/UX Design</span>
+                        </div>
+
+                        <div class="detail-stat">
+                            <strong>Category</strong>
+                            <span>Design &amp; Prototyping</span>
+                        </div>
+
+                        <div class="detail-stat">
+                            <strong>My Role</strong>
+                            <span>Update to reflect your actual contribution</span>
+                        </div>
+
+                        <div class="detail-stat">
+                            <strong>Status</strong>
+                            <span>Design portfolio project</span>
+                        </div>
+                    </article>
+
+                    <!-- 6. Technologies -->
+                    <article class="detail-panel" id="technologies">
+                        <h2>Tools &amp; Technologies</h2>
+
+                        <ul class="detail-list">
+                            <li>Figma</li>
+                            <li>Wireframing</li>
+                            <li>UI Design</li>
+                            <li>UX Flow Design</li>
+                            <li>Interactive Prototyping</li>
+                        </ul>
+
+                        <p>
+                            Include only the tools and techniques you
+                            actually used for this project.
+                        </p>
+                    </article>
+
+                    <article class="detail-panel">
+                        <h2>Interested in My Work?</h2>
+
+                        <p>
+                            Want to learn more about my design projects
+                            or development process? Feel free to contact me.
+                        </p>
+
+                        <a class="btn btn-primary"
+                           href="../index.html#contact">
+                            Get in Touch ↗
+                        </a>
+                    </article>
+
+                    <div class="detail-callout">
+                        This project page is designed to match the main
+                        portfolio. Replace placeholder descriptions and
+                        add genuine project screenshots to represent your
+                        actual work accurately.
+                    </div>
+
+                </aside>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-inner">
+
+            <p>© 2026 Hexyl Athan N. Roblon.</p>
+
+            <a href="../index.html#home">
+                Back to home ↑
+            </a>
+
+        </div>
+    </footer>
+<script>
+  const aurora = document.querySelector(".aurora-cursor");
+
+  if (
+    aurora &&
+    window.matchMedia("(hover: hover) and (pointer: fine)").matches
+  ) {
+    let targetX = window.innerWidth / 2;
+    let targetY = window.innerHeight / 2;
+    let currentX = targetX;
+    let currentY = targetY;
+    let animationFrame = null;
+
+    function animateAurora() {
+      currentX += (targetX - currentX) * 0.1;
+      currentY += (targetY - currentY) * 0.1;
+
+      aurora.style.setProperty("--cursor-x", `${currentX}px`);
+      aurora.style.setProperty("--cursor-y", `${currentY}px`);
+
+      if (
+        Math.abs(targetX - currentX) > 0.2 ||
+        Math.abs(targetY - currentY) > 0.2
+      ) {
+        animationFrame = requestAnimationFrame(animateAurora);
+      } else {
+        currentX = targetX;
+        currentY = targetY;
+        animationFrame = null;
+      }
+    }
+
+    window.addEventListener("pointermove", (event) => {
+      targetX = event.clientX;
+      targetY = event.clientY;
+
+      aurora.classList.add("is-visible");
+
+      if (animationFrame === null) {
+        animationFrame = requestAnimationFrame(animateAurora);
+      }
+    });
+
+    document.documentElement.addEventListener("pointerleave", () => {
+      aurora.classList.remove("is-visible");
+    });
+
+    document.documentElement.addEventListener("pointerenter", () => {
+      aurora.classList.add("is-visible");
+    });
+  }
+</script>
+</body>
+</html>
