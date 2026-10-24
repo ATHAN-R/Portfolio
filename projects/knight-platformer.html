@@ -1,620 +1,855 @@
-<!doctype html>
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#09090b">
-  <meta name="color-scheme" content="dark">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#09090b">
+    <meta name="color-scheme" content="dark">
 
-  <meta name="description" content="A 2D medieval knight platformer developed with Unity and C#, featuring dungeon exploration, combat, enemies, traps, and level transitions.">
+    <meta
+        name="description"
+        content="Explore Medieval Knight, a Unity 2D medieval platformer featuring combat, traps, potions, monsters, and a boss battle developed by Hexyl Athan N. Roblon."
+    >
 
-  <meta name="author" content="Hexyl Athan N. Roblon">
+    <title>Medieval Knight Platformer | Hexyl Athan N. Roblon</title>
 
-  <title>Medieval Knight Platformer | Hexyl Athan N. Roblon</title>
-<link rel="icon" type="image/png" href="../Images/logo.png">
-<link rel="apple-touch-icon" href="../Images/logo.png">
-  <link rel="stylesheet" href="../styles.css">
+    <link rel="icon" type="image/png" href="../Images/logo.png">
+    <link rel="apple-touch-icon" href="../Images/logo.png">
+    <link rel="stylesheet" href="../styles.css">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
 
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Project detail page */
+
+        .detail-hero {
+            padding: 150px 0 70px;
+        }
+
+        .detail-back {
+            display: inline-block;
+            margin-bottom: 35px;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .detail-kicker {
+            color: #a1a1aa;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.8rem;
+            margin-bottom: 18px;
+        }
+
+        .detail-hero h1 {
+            max-width: 900px;
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            line-height: 1.08;
+            letter-spacing: -2px;
+            margin-bottom: 25px;
+        }
+
+        .detail-lead {
+            max-width: 750px;
+            color: #a1a1aa;
+            font-size: 1.05rem;
+            line-height: 1.9;
+        }
+
+        .detail-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 28px 0;
+        }
+
+        .detail-tags span {
+            padding: 8px 14px;
+            border: 1px solid #27272a;
+            border-radius: 50px;
+            color: #d4d4d8;
+            font-size: 0.8rem;
+        }
+
+        .detail-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 30px;
+        }
+
+        .detail-layout {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 300px;
+            gap: 28px;
+            align-items: start;
+            padding-top: 30px;
+            padding-bottom: 100px;
+        }
+
+        .detail-main,
+        .detail-sidebar {
+            display: grid;
+            gap: 22px;
+            min-width: 0;
+        }
+
+        .detail-preview {
+            overflow: hidden;
+            border: 1px solid #27272a;
+            border-radius: 16px;
+            background: #111113;
+        }
+
+        .detail-preview img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        .detail-panel {
+            padding: 28px;
+            border: 1px solid #27272a;
+            border-radius: 16px;
+            background: #111113;
+            scroll-margin-top: 100px;
+            min-width: 0;
+        }
+
+        .detail-panel h2 {
+            font-size: 1.2rem;
+            margin: 0 0 18px;
+        }
+
+        .detail-panel p {
+            color: #a1a1aa;
+            line-height: 1.9;
+            margin-bottom: 14px;
+        }
+
+        .detail-panel p:last-child {
+            margin-bottom: 0;
+        }
+
+        .detail-list {
+            padding-left: 20px;
+            color: #a1a1aa;
+            line-height: 2;
+        }
+
+        .detail-list li {
+            margin-bottom: 5px;
+        }
+
+        .detail-list strong {
+            color: #e4e4e7;
+        }
+
+        .detail-stat {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            padding: 15px 0;
+            border-bottom: 1px solid #27272a;
+        }
+
+        .detail-stat:first-of-type {
+            padding-top: 0;
+        }
+
+        .detail-stat:last-child {
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .detail-stat strong {
+            font-size: 0.85rem;
+        }
+
+        .detail-stat span {
+            color: #a1a1aa;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .detail-callout {
+            padding: 20px;
+            border: 1px solid #27272a;
+            border-radius: 14px;
+            color: #a1a1aa;
+            font-size: 0.9rem;
+            line-height: 1.8;
+        }
+
+        .screenshot-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px;
+            margin-top: 22px;
+        }
+
+        .screenshot-item {
+            min-width: 0;
+            overflow: hidden;
+            border: 1px solid #27272a;
+            border-radius: 12px;
+            background: #09090b;
+        }
+
+        .screenshot-item a {
+            display: block;
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .screenshot-item img {
+            display: block;
+            width: 100%;
+            height: auto;
+            aspect-ratio: 16 / 10;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .screenshot-item a:hover img {
+            transform: scale(1.03);
+        }
+
+        .screenshot-caption {
+            padding: 12px 14px;
+            color: #a1a1aa;
+            font-size: 0.85rem;
+        }
+
+        .detail-back:hover,
+        .footer a:hover {
+            color: #fff;
+        }
+
+        @media (max-width: 800px) {
+            .detail-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .detail-hero {
+                padding-top: 120px;
+            }
+
+            .detail-hero h1 {
+                letter-spacing: -1px;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .detail-panel {
+                padding: 20px;
+            }
+
+            .detail-actions {
+                flex-direction: column;
+            }
+
+            .detail-actions .btn {
+                text-align: center;
+            }
+
+            .screenshot-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 
-<body>
-<div class="aurora-cursor" aria-hidden="true"></div>
-  <!-- NAVIGATION -->
-  <header class="navbar">
-    <div class="container navbar-inner">
+<body class="project-detail-page">
 
-      <a class="logo" href="../index.html#home">
-        ATHAN<span>.</span>
-      </a>
+    <div class="aurora-cursor" aria-hidden="true"></div>
 
-      <nav aria-label="Main navigation">
-        <ul class="nav-links">
-          <li><a href="../index.html#home">Home</a></li>
-          <li><a href="../index.html#about">About</a></li>
-          <li><a href="../index.html#skills">Skills</a></li>
-          <li><a href="../index.html#projects" class="active">Projects</a></li>
-          <li><a href="../index.html#contact">Contact</a></li>
-        </ul>
-      </nav>
+    <!-- Navigation -->
+    <header class="navbar">
+        <div class="container navbar-inner">
 
-      <a class="nav-contact" href="../index.html#contact">
-        Let's Talk ↗
-      </a>
+            <a class="logo" href="../index.html#home">
+                ATHAN<span>.</span>
+            </a>
+
+            <nav aria-label="Main navigation">
+                <ul class="nav-links">
+                    <li><a href="../index.html#home">Home</a></li>
+                    <li><a href="../index.html#about">About</a></li>
+                    <li><a href="../index.html#skills">Skills</a></li>
+                    <li>
+                        <a href="../index.html#projects" class="active">
+                            Projects
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+        </div>
+    </header>
+
+    <main>
+
+        <!-- Project Hero -->
+        <section class="detail-hero">
+            <div class="container">
+
+                <a class="detail-back" href="../index.html#projects">
+                    ← Back to all projects
+                </a>
+
+                <p class="detail-kicker">
+                    Game Development · Unity 2D
+                </p>
+
+                <h1>Medieval Knight <span class="gradient-text">Platformer</span></h1>
+
+                <p class="detail-lead">
+                    A 2D medieval platformer where players take the role of
+                    a knight tasked by the king to rescue the princess.
+                    Explore dangerous dungeons, fight hostile monsters,
+                    overcome traps, collect potions, and face a powerful
+                    boss to complete the adventure.
+                </p>
+
+                <div class="detail-tags">
+                    <span>Unity</span>
+                    <span>C#</span>
+                    <span>2D Platformer</span>
+                    <span>Game Mechanics</span>
+                    <span>Animation</span>
+                    <span>Game UI</span>
+                </div>
+
+                <div class="detail-actions">
+                    <a class="btn btn-primary" href="#overview">
+                        Explore Project ↓
+                    </a>
+
+                    <a class="btn btn-secondary" href="#gameplay">
+                        View gameplay ↓
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Project Details -->
+        <section>
+            <div class="container detail-layout">
+
+                <div class="detail-main">
+
+                    <!-- Main Project Preview -->
+                    <div class="detail-preview">
+                        <img
+                            src="../Images/InsideKnight.png"
+                            alt="Medieval Knight 2D platformer gameplay"
+                        >
+                    </div>
+
+                    <!-- 1. Overview -->
+                    <article class="detail-panel" id="overview">
+                        <h2>Project Overview</h2>
+
+                        <p>
+                            Medieval Knight is a 2D platformer game developed
+                            using Unity. The story follows a knight who
+                            receives a mission from the king to rescue the
+                            princess from a dangerous dungeon.
+                        </p>
+
+                        <p>
+                            Players navigate through different areas,
+                            defeat enemies, avoid environmental hazards,
+                            and use combat abilities to progress through
+                            the adventure. The game combines platforming,
+                            exploration, enemy encounters, and a boss fight
+                            into one medieval-themed experience.
+                        </p>
+
+                        <p>
+                            The project focuses on implementing gameplay
+                            mechanics, character animations, enemy behavior,
+                            health systems, traps, audio feedback, dialogue,
+                            and scene transitions to create a more complete
+                            playable experience.
+                        </p>
+                    </article>
+
+                    <!-- 2. Features -->
+                    <article class="detail-panel" id="features">
+                        <h2>Key Features</h2>
+
+                        <ul class="detail-list">
+                            <li>
+                                <strong>Player Movement:</strong>
+                                Move left and right, jump across platforms,
+                                and navigate the dungeon using keyboard controls.
+                            </li>
+
+                            <li>
+                                <strong>Combat System:</strong>
+                                Attack hostile enemies using the knight's
+                                combat animations and damage mechanics.
+                            </li>
+
+                            <li>
+                                <strong>Enemy AI:</strong>
+                                Hostile creatures such as goblins and slimes
+                                detect the player, move toward targets,
+                                attack, receive damage, and can be defeated.
+                            </li>
+
+                            <li>
+                                <strong>Health System:</strong>
+                                Track the player's health and handle damage
+                                from enemies, traps, and falls.
+                            </li>
+
+                            <li>
+                                <strong>Environmental Traps:</strong>
+                                Avoid falling rocks, spikes, disappearing
+                                platforms, and pressure-plate mechanisms.
+                            </li>
+
+                            <li>
+                                <strong>Pushable Objects:</strong>
+                                Use movable boxes to interact with
+                                pressure plates and activate mechanisms.
+                            </li>
+
+                            <li>
+                                <strong>Potions and Power-Ups:</strong>
+                                Use health potions to restore health and
+                                double-attack potions to temporarily improve
+                                combat capability.
+                            </li>
+
+                            <li>
+                                <strong>Boss Battle:</strong>
+                                Fight a powerful boss with its own health
+                                system, combat behavior, and battle-room setup.
+                            </li>
+
+                            <li>
+                                <strong>Dialogue and Story:</strong>
+                                Present the opening story and ending dialogue
+                                through character dialogue interfaces.
+                            </li>
+
+                            <li>
+                                <strong>Scene Transitions:</strong>
+                                Use doors and transitions to move between
+                                areas and continue the adventure after
+                                completing important encounters.
+                            </li>
+
+                            <li>
+                                <strong>Audio and Settings:</strong>
+                                Integrate background music, sound effects,
+                                and audio settings for a more immersive game.
+                            </li>
+
+                            <li>
+                                <strong>Main Menu and Pause Menu:</strong>
+                                Provide navigation and pause functionality
+                                for the player.
+                            </li>
+                        </ul>
+                    </article>
+
+                    <!-- 3. Gameplay Workflow -->
+                    <article class="detail-panel" id="workflow">
+                        <h2>Gameplay Workflow</h2>
+
+                        <p>
+                            <strong>01. Main Menu</strong><br>
+                            Players begin at the main menu, where they can
+                            start the game and access the available settings.
+                        </p>
+
+                        <p>
+                            <strong>02. Opening Dialogue</strong><br>
+                            The opening dialogue introduces the king's request
+                            and establishes the knight's mission to rescue
+                            the princess.
+                        </p>
+
+                        <p>
+                            <strong>03. Dungeon Exploration</strong><br>
+                            Players traverse platforms, move between areas,
+                            jump over obstacles, and explore the dungeon.
+                        </p>
+
+                        <p>
+                            <strong>04. Enemy Encounters</strong><br>
+                            The knight fights hostile mobs, manages health,
+                            and uses attacks to defeat enemies encountered
+                            throughout the level.
+                        </p>
+
+                        <p>
+                            <strong>05. Traps and Interactions</strong><br>
+                            Players avoid hazards such as spikes and falling
+                            rocks, react to disappearing tiles, and use
+                            pushable boxes to activate pressure plates.
+                        </p>
+
+                        <p>
+                            <strong>06. Potions and Power-Ups</strong><br>
+                            Potions provide additional support during combat,
+                            including health restoration and increased
+                            attack capability.
+                        </p>
+
+                        <p>
+                            <strong>07. Boss Fight</strong><br>
+                            The knight faces a stronger enemy that requires
+                            careful movement, attacks, and health management.
+                        </p>
+
+                        <p>
+                            <strong>08. Completion and Ending</strong><br>
+                            After defeating the boss, the player can progress
+                            through the transition door toward the concluding
+                            part of the adventure.
+                        </p>
+                    </article>
+
+                    <!-- 4. Challenges -->
+                    <article class="detail-panel" id="challenges">
+                        <h2>Challenges &amp; Development</h2>
+
+                        <p>
+                            One challenge was coordinating the player's
+                            movement and animations. Walking, jumping,
+                            attacking, defending, and taking damage require
+                            appropriate animation states and transitions
+                            to keep the character's behavior consistent.
+                        </p>
+
+                        <p>
+                            Enemy behavior and combat also require careful
+                            coordination. Detection ranges, attack distances,
+                            cooldowns, hitboxes, health values, and damage
+                            feedback must work together for combat to feel
+                            responsive.
+                        </p>
+
+                        <p>
+                            Environmental traps introduced additional
+                            challenges because collision detection and
+                            trigger behavior must distinguish between
+                            the player and other objects. Pressure plates,
+                            pushable boxes, and disappearing platforms
+                            require reliable interaction logic.
+                        </p>
+
+                        <p>
+                            Another consideration was coordinating the
+                            boss-room encounter with the camera, transitions,
+                            health UI, and rewards. These systems need to
+                            work together without disrupting gameplay.
+                        </p>
+
+                        <p>
+                            Audio, dialogue, and scene transitions also
+                            contribute to the overall experience. Background
+                            music, sound effects, menus, and story sequences
+                            help connect the gameplay systems into a more
+                            cohesive adventure.
+                        </p>
+                    </article>
+
+                    <!-- Gameplay Preview -->
+<section class="gameplay-section" id="gameplay">
+    <div class="container">
+        <article class="detail-panel">
+            <h2>Gameplay Preview</h2>
+
+            <p>
+                Watch the Medieval Knight gameplay demo, featuring
+                dungeon exploration, combat, traps, and other game mechanics.
+            </p>
+
+            <div class="detail-preview">
+                <video
+                    autoplay
+                    muted
+                    loop
+                    playsinline
+                    controls
+                    preload="metadata"
+                    poster="../Images/KNIGHT1 (1).png"
+                    style="display: block; width: 100%; height: auto;"
+                >
+                    <source
+                        src="../Images/Gameplay.mp4"
+                        type="video/mp4"
+                    >
+                    Your browser does not support HTML video.
+                </video>
+            </div>
+        </article>
+    </div>
+</section>
+                    
+<!-- Project Screenshots -->
+<article class="detail-panel" id="screenshots">
+    <h2>Project Screenshots</h2>
+
+    <p>
+        Explore screenshots from Medieval Knight, showcasing the
+        dungeon environment and gameplay visuals.
+    </p>
+
+    <div class="screenshot-grid">
+
+        <div class="screenshot-item">
+            <a
+                href="../Images/InsideKnight.png"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Open dungeon gameplay screenshot"
+            >
+                <img
+                    src="../Images/InsideKnight.png"
+                    alt="Medieval Knight dungeon gameplay"
+                    loading="lazy"
+                >
+            </a>
+
+            <div class="screenshot-caption">
+                Dungeon Environment
+            </div>
+        </div>
+
+        <div class="screenshot-item">
+            <a
+                href="../Images/KNIGHT1 (1).png"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Open Medieval Knight game screenshot"
+            >
+                <img
+                    src="../Images/KNIGHT1 (1).png"
+                    alt="Medieval Knight game scene"
+                    loading="lazy"
+                >
+            </a>
+
+            <div class="screenshot-caption">
+                Pause Gameplay UI
+            </div>
+        </div>
+
+        <div class="screenshot-item">
+            <a
+                href="../Images/KNIGHT1 (2).png"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Open third Medieval Knight screenshot"
+            >
+                <img
+                    src="../Images/KNIGHT1 (2).png"
+                    alt="Medieval Knight gameplay environment"
+                    loading="lazy"
+                >
+            </a>
+
+            <div class="screenshot-caption">
+                Settings UI
+            </div>
+        </div>
+
+        <div class="screenshot-item">
+            <a
+                href="../Images/knight.png"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Open fourth Medieval Knight screenshot"
+            >
+                <img
+                    src="../Images/knight.png"
+                    alt="Medieval Knight action gameplay"
+                    loading="lazy"
+                >
+            </a>
+
+            <div class="screenshot-caption">
+                Main Menu UI
+            </div>
+        </div>
 
     </div>
-  </header>
+</article>
+                </div>
 
-  <main>
+                <!-- Sidebar -->
+                <aside class="detail-sidebar">
 
-    <!-- PROJECT HERO -->
-    <section class="hero">
-      <div class="container hero-content">
+                    <article class="detail-panel">
+                        <h2>Project Information</h2>
 
-        <a class="detail-back" href="../index.html#projects">
-          ← Back to Projects
-        </a>
+                        <div class="detail-stat">
+                            <strong>Project Name</strong>
+                            <span>Medieval Knight</span>
+                        </div>
 
-        <div class="hero-badge">
-          <span class="status-dot"></span>
-          Game Development · Unity 2D
-        </div>
+                        <div class="detail-stat">
+                            <strong>Project Type</strong>
+                            <span>2D Platformer Game</span>
+                        </div>
 
-        <h1>
-          Medieval Knight<br>
-          <span class="gradient-text">Platformer.</span>
-        </h1>
+                        <div class="detail-stat">
+                            <strong>Genre</strong>
+                            <span>Medieval Adventure</span>
+                        </div>
 
-        <p class="hero-description">
-          An action-packed 2D medieval adventure where a knight
-          explores dangerous dungeons, fights monsters, avoids
-          deadly traps, and embarks on a mission to rescue a princess.
-        </p>
+                        <div class="detail-stat">
+                            <strong>My Role</strong>
+                            <span>Game Development</span>
+                        </div>
 
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="#overview">
-            Explore Project ↓
-          </a>
+                        <div class="detail-stat">
+                            <strong>Game Engine</strong>
+                            <span>Unity</span>
+                        </div>
 
-          <a class="btn btn-secondary" href="../index.html#contact">
-            Contact Me ↗
-          </a>
-        </div>
+                        <div class="detail-stat">
+                            <strong>Programming Language</strong>
+                            <span>C#</span>
+                        </div>
 
-      </div>
-    </section>
+                        <div class="detail-stat">
+                            <strong>Status</strong>
+                            <span>Game Development Project</span>
+                        </div>
+                    </article>
 
-    <!-- GAMEPLAY PREVIEW -->
-    <section id="preview">
-      <div class="container">
+                    <!-- 6. Technologies -->
+                    <article class="detail-panel" id="technologies">
+                        <h2>Tools &amp; Technologies</h2>
 
-        <span class="section-label">Featured Project</span>
+                        <ul class="detail-list">
+                            <li>Unity</li>
+                            <li>C#</li>
+                            <li>Rigidbody2D Physics</li>
+                            <li>2D Animations</li>
+                            <li>Animator Controllers</li>
+                            <li>Collision and Trigger Detection</li>
+                            <li>Unity UI</li>
+                            <li>TextMeshPro</li>
+                            <li>Audio Sources and Audio Clips</li>
+                            <li>Scene Management</li>
+                        </ul>
+                    </article>
 
-        <h2 class="section-title">
-          Inside the Dungeon
-        </h2>
+                    <!-- Development Highlights -->
+                    <article class="detail-panel">
+                        <h2>Development Highlights</h2>
 
-        <p class="section-description">
-          Take a look at the medieval world, gameplay mechanics,
-          and systems behind this Unity 2D platformer.
-        </p>
+                        <p>
+                            The project brings together several game
+                            development concepts, including player controls,
+                            enemy AI, combat systems, environmental hazards,
+                            user interfaces, audio, and scene management.
+                        </p>
 
-        <div class="project-preview">
-          <img
-            src="../Images/InsideKnight.png"
-            alt="Medieval Knight Platformer gameplay screenshot"
-            loading="lazy"
-          >
-        </div>
+                        <p>
+                            Working on these systems provides practical
+                            experience in scripting, debugging, animation
+                            integration, collision handling, and gameplay
+                            design using Unity.
+                        </p>
+                    </article>
 
-      </div>
-    </section>
+                    <div class="detail-callout">
+                        Medieval Knight combines platforming, combat,
+                        dungeon exploration, and interactive hazards in
+                        a medieval adventure built with Unity and C#.
+                    </div>
 
-    <!-- PROJECT OVERVIEW -->
-    <section id="overview">
-      <div class="container">
+                </aside>
 
-        <span class="section-label">About the Project</span>
-
-        <h2 class="section-title">
-          Building a Medieval Adventure
-        </h2>
-
-        <p class="section-description">
-          A 2D platformer project focused on interactive gameplay,
-          combat, environmental challenges, and story progression.
-        </p>
-
-        <div class="about-grid">
-
-          <div class="about-text">
-
-            <p>
-              Medieval Knight Platformer is a game development project
-              built using Unity and C#. The player takes control of a
-              medieval knight who must travel through dungeon levels
-              filled with enemies, traps, and challenging obstacles.
-            </p>
-
-            <p>
-              Players navigate the environment by running, jumping,
-              fighting enemies, and interacting with objects. As the
-              adventure progresses, they encounter increasingly
-              challenging situations and work toward completing
-              the knight's rescue mission.
-            </p>
-
-            <p>
-              The project combines gameplay programming, character
-              animation, 2D physics, tilemap level design, health
-              management, scene transitions, audio, and dialogue
-              into one game experience.
-            </p>
-
-          </div>
-
-          <div class="about-cards">
-
-            <article class="info-card">
-              <div class="card-icon" aria-hidden="true">⚔</div>
-              <h3>Combat System</h3>
-              <p>
-                Player attacks, enemy encounters, and character
-                animations that support gameplay interactions.
-              </p>
-            </article>
-
-            <article class="info-card">
-              <div class="card-icon" aria-hidden="true">♥</div>
-              <h3>Health System</h3>
-              <p>
-                Health and damage handling for the player and
-                environmental hazards.
-              </p>
-            </article>
-
-            <article class="info-card">
-              <div class="card-icon" aria-hidden="true">▦</div>
-              <h3>Dungeon Levels</h3>
-              <p>
-                Tilemap environments, interactive platforms,
-                obstacles, and transitions between areas.
-              </p>
-            </article>
-
-            <article class="info-card">
-              <div class="card-icon" aria-hidden="true">♜</div>
-              <h3>Boss Encounters</h3>
-              <p>
-                Special encounter sequences with dedicated
-                transitions and camera positioning.
-              </p>
-            </article>
-
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- GAMEPLAY FEATURES -->
-    <section id="features">
-      <div class="container">
-
-        <span class="section-label">What It Includes</span>
-
-        <h2 class="section-title">
-          Gameplay Features
-        </h2>
-
-        <p class="section-description">
-          The game combines movement, combat, environmental
-          interactions, and supporting systems to create
-          an engaging platforming experience.
-        </p>
-
-        <div class="skills-grid">
-
-          <article class="skill-card">
-            <h3>Player Movement</h3>
-            <p class="section-description">
-              Horizontal movement, jumping, and character
-              control using Unity's 2D physics system.
-            </p>
-            <div class="skill-list">
-              <span class="skill-tag">Movement</span>
-              <span class="skill-tag">Jumping</span>
-              <span class="skill-tag">Rigidbody2D</span>
             </div>
-          </article>
+        </section>
 
-          <article class="skill-card">
-            <h3>Combat & Enemies</h3>
-            <p class="section-description">
-              Attack inputs, enemy interactions, animation
-              states, and boss-room encounters.
-            </p>
-            <div class="skill-list">
-              <span class="skill-tag">Combat</span>
-              <span class="skill-tag">Animator</span>
-              <span class="skill-tag">Enemy AI</span>
-            </div>
-          </article>
+    </main>
 
-          <article class="skill-card">
-            <h3>Traps & Obstacles</h3>
-            <p class="section-description">
-              Environmental hazards and interactive objects
-              that challenge the player's timing and movement.
-            </p>
-            <div class="skill-list">
-              <span class="skill-tag">Spike Traps</span>
-              <span class="skill-tag">Falling Rocks</span>
-              <span class="skill-tag">Platforms</span>
-            </div>
-          </article>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-inner">
 
-          <article class="skill-card">
-            <h3>Health & Damage</h3>
-            <p class="section-description">
-              Damage calculations, player health tracking,
-              and handling defeat conditions.
-            </p>
-            <div class="skill-list">
-              <span class="skill-tag">Player Health</span>
-              <span class="skill-tag">Damage</span>
-              <span class="skill-tag">Collision</span>
-            </div>
-          </article>
-
-          <article class="skill-card">
-            <h3>Level Transitions</h3>
-            <p class="section-description">
-              Door interactions, scene changes, fade effects,
-              and camera positioning between game areas.
-            </p>
-            <div class="skill-list">
-              <span class="skill-tag">Scenes</span>
-              <span class="skill-tag">Camera</span>
-              <span class="skill-tag">Transitions</span>
-            </div>
-          </article>
-
-          <article class="skill-card">
-            <h3>UI & Storytelling</h3>
-            <p class="section-description">
-              Main menus, pause controls, dialogue sequences,
-              and audio settings supporting the game experience.
-            </p>
-            <div class="skill-list">
-              <span class="skill-tag">Game UI</span>
-              <span class="skill-tag">Dialogue</span>
-              <span class="skill-tag">Audio</span>
-            </div>
-          </article>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- DEVELOPMENT PROCESS -->
-    <section id="development">
-      <div class="container">
-
-        <span class="section-label">Behind the Scenes</span>
-
-        <h2 class="section-title">
-          Development Process
-        </h2>
-
-        <p class="section-description">
-          The project uses separate scripts and Unity components
-          to organize the game's mechanics and interactions.
-        </p>
-
-        <div class="about-cards">
-
-          <article class="info-card">
-            <div class="card-icon" aria-hidden="true">01</div>
-            <h3>Gameplay Programming</h3>
-            <p>
-              C# scripts handle player input, movement,
-              health, damage, and interactions with
-              enemies and environmental objects.
-            </p>
-          </article>
-
-          <article class="info-card">
-            <div class="card-icon" aria-hidden="true">02</div>
-            <h3>Animation Integration</h3>
-            <p>
-              Unity Animator controllers coordinate
-              character movement, attacks, defense,
-              damage, and other animation states.
-            </p>
-          </article>
-
-          <article class="info-card">
-            <div class="card-icon" aria-hidden="true">03</div>
-            <h3>Level Implementation</h3>
-            <p>
-              Tilemaps, prefabs, colliders, and triggers
-              help build dungeon environments and
-              interactive gameplay elements.
-            </p>
-          </article>
-
-          <article class="info-card">
-            <div class="card-icon" aria-hidden="true">04</div>
-            <h3>Testing & Debugging</h3>
-            <p>
-              Gameplay testing helps identify issues with
-              collisions, animation timing, damage,
-              camera movement, and scene transitions.
-            </p>
-          </article>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- CHALLENGES -->
-    <section id="challenges">
-      <div class="container">
-
-        <span class="section-label">Problem Solving</span>
-
-        <h2 class="section-title">
-          Challenges & Learnings
-        </h2>
-
-        <div class="about-grid">
-
-          <div class="about-text">
-
-            <h3>Animation and Input</h3>
-
-            <p>
-              Coordinating player inputs with animation states
-              requires careful timing. Attacks, movement, and
-              defense must work together without causing
-              unintended animation transitions.
-            </p>
-
-            <h3>Physics and Collisions</h3>
-
-            <p>
-              Traps, moving objects, and platforms rely on
-              correct collision and trigger behavior. Testing
-              these interactions helps prevent unexpected
-              damage and movement problems.
-            </p>
-
-          </div>
-
-          <div class="about-text">
-
-            <h3>Camera and Scene Changes</h3>
-
-            <p>
-              Camera positioning becomes more challenging
-              when the player moves between dungeon rooms
-              or enters a boss area. Scene transitions need
-              to coordinate player placement and camera movement.
-            </p>
-
-            <h3>System Integration</h3>
-
-            <p>
-              Movement, health, traps, enemies, and scene
-              management must communicate correctly.
-              Organizing scripts by responsibility makes
-              debugging and future improvements easier.
-            </p>
-
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- TECHNOLOGIES -->
-    <section id="technologies">
-      <div class="container">
-
-        <span class="section-label">Development Tools</span>
-
-        <h2 class="section-title">
-          Technologies Used
-        </h2>
-
-        <p class="section-description">
-          Tools and technologies used to implement the
-          game's mechanics, visuals, and interactions.
-        </p>
-
-        <div class="skill-list">
-          <span class="skill-tag">Unity</span>
-          <span class="skill-tag">C#</span>
-          <span class="skill-tag">Rigidbody2D</span>
-          <span class="skill-tag">Unity Animator</span>
-          <span class="skill-tag">Tilemaps</span>
-          <span class="skill-tag">Prefabs</span>
-          <span class="skill-tag">Unity UI</span>
-          <span class="skill-tag">Scene Management</span>
-          <span class="skill-tag">2D Collision Detection</span>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- PROJECT INFORMATION -->
-    <section id="project-info">
-      <div class="container">
-
-        <span class="section-label">Project Details</span>
-
-        <h2 class="section-title">
-          Project Information
-        </h2>
-
-        <div class="about-cards">
-
-          <article class="info-card">
-            <h3>Project Type</h3>
-            <p>2D Action Platformer</p>
-          </article>
-
-          <article class="info-card">
-            <h3>Game Engine</h3>
-            <p>Unity</p>
-          </article>
-
-          <article class="info-card">
-            <h3>Programming Language</h3>
-            <p>C#</p>
-          </article>
-
-          <article class="info-card">
-            <h3>My Role</h3>
-            <p>
-              Gameplay scripting, system integration,
-              and level implementation.
-            </p>
-          </article>
-
-          <article class="info-card">
-            <h3>Project Status</h3>
-            <p>In Development</p>
-          </article>
-
-          <article class="info-card">
-            <h3>Main Objective</h3>
-            <p>
-              Develop a playable medieval adventure
-              with combat, dungeon exploration,
-              and story progression.
-            </p>
-          </article>
-
-        </div>
-
-        <p class="contact-note">
-          Update the project status and role to reflect
-          the current state of your game and your actual
-          contributions.
-        </p>
-
-      </div>
-    </section>
-
-    <!-- CONTACT CTA -->
-    <section>
-      <div class="container">
-
-        <div class="contact-box">
-
-          <span class="section-label">Let's Connect</span>
-
-          <h2 class="section-title">
-            Interested in My Work?
-          </h2>
-
-          <p class="section-description">
-            I'm interested in game development, programming,
-            and building interactive digital experiences.
-            Feel free to reach out to discuss my projects.
-          </p>
-
-          <a class="btn btn-primary" href="../index.html#contact">
-            Contact Me ↗
-          </a>
-
-          <div class="social-links">
-            <a href="../index.html#projects">
-              More Projects
-            </a>
+            <p>© 2026 Hexyl Athan N. Roblon.</p>
 
             <a href="../index.html#home">
-              Back to Home ↑
+                Back to home ↑
             </a>
-          </div>
 
         </div>
+    </footer>
 
-      </div>
-    </section>
+    <!-- Aurora Cursor Effect -->
+    <script>
+        const aurora = document.querySelector(".aurora-cursor");
 
-  </main>
+        if (
+            aurora &&
+            window.matchMedia("(hover: hover) and (pointer: fine)").matches
+        ) {
+            let targetX = window.innerWidth / 2;
+            let targetY = window.innerHeight / 2;
+            let currentX = targetX;
+            let currentY = targetY;
+            let animationFrame = null;
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="container footer-inner">
+            function animateAurora() {
+                currentX += (targetX - currentX) * 0.1;
+                currentY += (targetY - currentY) * 0.1;
 
-      <p>
-        © 2026 Hexyl Athan N. Roblon. Built with HTML & CSS.
-      </p>
+                aurora.style.setProperty("--cursor-x", `${currentX}px`);
+                aurora.style.setProperty("--cursor-y", `${currentY}px`);
 
-      <a href="../index.html#home">
-        Back to top ↑
-      </a>
+                if (
+                    Math.abs(targetX - currentX) > 0.2 ||
+                    Math.abs(targetY - currentY) > 0.2
+                ) {
+                    animationFrame = requestAnimationFrame(animateAurora);
+                } else {
+                    currentX = targetX;
+                    currentY = targetY;
+                    animationFrame = null;
+                }
+            }
 
-    </div>
-  </footer>
-<script>
-  const aurora = document.querySelector(".aurora-cursor");
+            window.addEventListener("pointermove", (event) => {
+                targetX = event.clientX;
+                targetY = event.clientY;
 
-  if (
-    aurora &&
-    window.matchMedia("(hover: hover) and (pointer: fine)").matches
-  ) {
-    let targetX = window.innerWidth / 2;
-    let targetY = window.innerHeight / 2;
-    let currentX = targetX;
-    let currentY = targetY;
-    let animationFrame = null;
+                aurora.classList.add("is-visible");
 
-    function animateAurora() {
-      currentX += (targetX - currentX) * 0.1;
-      currentY += (targetY - currentY) * 0.1;
+                if (animationFrame === null) {
+                    animationFrame = requestAnimationFrame(animateAurora);
+                }
+            });
 
-      aurora.style.setProperty("--cursor-x", `${currentX}px`);
-      aurora.style.setProperty("--cursor-y", `${currentY}px`);
+            document.documentElement.addEventListener("pointerleave", () => {
+                aurora.classList.remove("is-visible");
+            });
 
-      if (
-        Math.abs(targetX - currentX) > 0.2 ||
-        Math.abs(targetY - currentY) > 0.2
-      ) {
-        animationFrame = requestAnimationFrame(animateAurora);
-      } else {
-        currentX = targetX;
-        currentY = targetY;
-        animationFrame = null;
-      }
-    }
+            document.documentElement.addEventListener("pointerenter", () => {
+                aurora.classList.add("is-visible");
+            });
+        }
+    </script>
 
-    window.addEventListener("pointermove", (event) => {
-      targetX = event.clientX;
-      targetY = event.clientY;
-
-      aurora.classList.add("is-visible");
-
-      if (animationFrame === null) {
-        animationFrame = requestAnimationFrame(animateAurora);
-      }
-    });
-
-    document.documentElement.addEventListener("pointerleave", () => {
-      aurora.classList.remove("is-visible");
-    });
-
-    document.documentElement.addEventListener("pointerenter", () => {
-      aurora.classList.add("is-visible");
-    });
-  }
-</script>
 </body>
 </html>
